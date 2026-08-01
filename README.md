@@ -35,5 +35,3 @@ python3 -m http.server 8000
 **Notes**
 
 - This is a personal roadmap focused on practical milestones, freelancing targets, and career transition guidance. Treat the content as living notes rather than production code.
-
-If you'd like, I can: serve the file locally, extract sections into separate files, or add a simple README badge and license — tell me which you'd prefer.
