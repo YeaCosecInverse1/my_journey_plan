@@ -1,0 +1,3234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Strategic DevOps & Engineering Master Plan - Dhaka → Global → Tokyo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #0a0a0f;
+            color: #e8e8f0;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #0a0a0f;
+            border-bottom: 1px solid #1e1e2e;
+            padding: 24px 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .header-title-section h1 {
+            margin: 0;
+            font-size: clamp(18px, 3vw, 26px);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #a0a0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-title-section .label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #6C63FF;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .header-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #1e1e2e;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        .badge span:first-child {
+            color: #6C63FF;
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        .badge span:last-child {
+            color: #a0a0c0;
+        }
+
+        .phase-selector {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            padding: 8px 0 0;
+            margin-top: 8px;
+            background: #0a0a0f;
+        }
+
+        .phase-btn {
+            padding: 8px 14px;
+            background: transparent;
+            color: #666;
+            border: none;
+            border-radius: 6px 6px 0 0;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+            flex-shrink: 0;
+        }
+
+        .phase-btn.active {
+            font-weight: 700;
+            color: #fff;
+            border-bottom-color: currentColor;
+        }
+
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .phase-hero {
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.13) 0%, #12121e 100%);
+            border: 1px solid rgba(108, 99, 255, 0.27);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-title-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .hero-icon {
+            font-size: clamp(20px, 4vw, 32px);
+            margin-bottom: 4px;
+        }
+
+        .hero-title {
+            margin: 0 0 4px;
+            font-size: clamp(16px, 2.5vw, 22px);
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .hero-subtitle {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero-period {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .hero-mission {
+            background: rgba(10, 10, 15, 0.53);
+            border-radius: 8px;
+            padding: 12px 16px;
+            max-width: 340px;
+        }
+
+        .mission-label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mission-text {
+            font-size: 12px;
+            color: #c0c0d8;
+            line-height: 1.6;
+        }
+
+        .systems-status {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .system-chip {
+            background: #0a0a0f;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 10px;
+        }
+
+        .system-chip-label {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .system-chip-value {
+            color: #a0a0c0;
+        }
+
+        .tab-navigation {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #1e1e2e;
+            padding-bottom: 0;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 8px 14px;
+            background: transparent;
+            color: #555;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            font-weight: 700;
+            border-bottom-color: currentColor;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .do-list, .dont-list {
+            background: #12121e;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .do-list {
+            border: 1px solid rgba(0, 200, 150, 0.2);
+        }
+
+        .dont-list {
+            border: 1px solid rgba(255, 107, 107, 0.2);
+        }
+
+        .list-header {
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .do-list .list-header {
+            color: #00C896;
+        }
+
+        .dont-list .list-header {
+            color: #FF6B6B;
+        }
+
+        .list-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+
+        .list-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .do-list .list-dot {
+            background: #00C896;
+        }
+
+        .dont-list .list-dot {
+            background: #FF6B6B;
+        }
+
+        .list-text {
+            font-size: 12px;
+            color: #c0c0d8;
+            line-height: 1.6;
+        }
+
+        .tracker-container {
+            background: #12121e;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .tracker-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .tracker-title {
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tracker-count {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .progress-bar {
+            background: #0a0a0f;
+            border-radius: 6px;
+            height: 4px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.3s;
+        }
+
+        .tracker-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #0a0a0f;
+            border: 1px solid #1e1e2e;
+            transition: all 0.2s;
+        }
+
+        .tracker-item.checked {
+            border-color: currentColor;
+            background: rgba(108, 99, 255, 0.07);
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .tracker-item.checked .checkbox {
+            border-color: currentColor;
+            background: currentColor;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .tracker-task {
+            flex: 1;
+            font-size: 12px;
+            color: #c0c0d8;
+        }
+
+        .tracker-item.checked .tracker-task {
+            color: #888;
+            text-decoration: line-through;
+        }
+
+        .tracker-tag {
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .tips-container, .resources-container, .scenarios-container {
+            background: #12121e;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .section-title {
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tip-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            padding: 12px 14px;
+            background: #0a0a0f;
+            border-radius: 8px;
+            border: 1px solid rgba(108, 99, 255, 0.13);
+        }
+
+        .tip-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .tip-text {
+            font-size: 12px;
+            color: #c8c8e0;
+            line-height: 1.7;
+        }
+
+        .resource-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+            padding: 12px 14px;
+            background: #0a0a0f;
+            border-radius: 8px;
+            border: 1px solid #1e1e2e;
+            align-items: center;
+        }
+
+        .resource-number {
+            background: currentColor;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .resource-info {
+            flex: 1;
+        }
+
+        .resource-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e0e0f0;
+        }
+
+        .resource-note {
+            font-size: 11px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .resource-url {
+            font-size: 11px;
+            font-family: monospace;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .scenario-card {
+            background: #12121e;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .scenario-card.best {
+            border: 1px solid rgba(0, 200, 150, 0.2);
+        }
+
+        .scenario-card.worst {
+            border: 1px solid rgba(255, 159, 67, 0.2);
+        }
+
+        .scenario-card.key {
+            border: 1px solid rgba(108, 99, 255, 0.27);
+        }
+
+        .scenario-header {
+            font-weight: 800;
+            font-size: 12px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scenario-text {
+            font-size: 13px;
+            color: #c0c0d8;
+            line-height: 1.7;
+        }
+
+        .income-chart {
+            background: #12121e;
+            border: 1px solid #1e1e2e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+
+        .chart-title {
+            color: #fff;
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .chart-description {
+            color: #FF9F43;
+            font-size: 11px;
+            margin-bottom: 16px;
+            line-height: 1.6;
+            padding: 8px 12px;
+            background: rgba(255, 159, 67, 0.08);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 159, 67, 0.15);
+        }
+
+        .chart-bars {
+            display: flex;
+            gap: 4px;
+            align-items: stretch;
+            height: 140px;
+        }
+
+        .bar-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .bar-wrapper {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            min-height: 0;
+        }
+
+        .bar-label {
+            font-size: 9px;
+            color: #555;
+            text-align: center;
+        }
+
+        .bar {
+            width: 100%;
+            background: rgba(108, 99, 255, 0.55);
+            border-radius: 4px 4px 0 0;
+            transition: all 0.3s;
+            min-height: 4px;
+        }
+
+        .bar.active {
+            opacity: 1;
+        }
+
+        .bar-phase {
+            font-size: 8px;
+            color: #444;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .bar-prob {
+            font-size: 7px;
+            color: #666;
+            text-align: center;
+            line-height: 1.3;
+            max-width: 60px;
+            word-wrap: break-word;
+        }
+
+        .warning-box {
+            background: #1a1020;
+            border: 1px solid rgba(168, 85, 247, 0.27);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .warning-title {
+            color: #A855F7;
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .warning-text {
+            font-size: 12px;
+            color: #c0c0d8;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .warning-details {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .detail-chip {
+            background: #0a0a0f;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        .income-reality-box {
+            background: #12121e;
+            border: 1px solid rgba(255, 159, 67, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .reality-title {
+            color: #FF9F43;
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .reality-description {
+            color: #888;
+            font-size: 11px;
+            margin-bottom: 14px;
+        }
+
+        .reality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .reality-card {
+            background: #0a0a0f;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .reality-label {
+            font-weight: 700;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .reality-desc {
+            color: #a0a0c0;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .reality-rule {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: #0a0a0f;
+            border-radius: 8px;
+            border: 1px solid #1e1e2e;
+        }
+
+        .reality-rule-text {
+            color: #888;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .reality-rule-text strong {
+            color: #fff;
+        }
+
+        .freelancing-box {
+            background: #12121e;
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .freelancing-title {
+            color: #EC4899;
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .freelancing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .freelancing-card {
+            background: #0a0a0f;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .freelancing-card.bonus {
+            border: 1px solid rgba(0, 200, 150, 0.2);
+        }
+
+        .freelancing-card.reliable {
+            border: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .freelancing-label {
+            font-weight: 700;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .japan-salary-box {
+            background: #12121e;
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .japan-title {
+            color: #4ECDC4;
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .japan-text {
+            font-size: 12px;
+            color: #c0c0d8;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .japan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .japan-card {
+            background: #0a0a0f;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .japan-card.first {
+            border: 1px solid rgba(0, 200, 150, 0.2);
+        }
+
+        .japan-card.longterm {
+            border: 1px solid rgba(255, 159, 67, 0.2);
+        }
+
+        /* ── DAILY OS ── */
+        .dos-time-block {
+            margin-bottom: 14px;
+            padding: 14px;
+            background: #0a0a0f;
+            border-radius: 10px;
+            border: 1px solid #1e1e2e;
+        }
+        .dos-time-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .dos-time-label {
+            font-weight: 700;
+            font-size: 12px;
+        }
+        .dos-time-total {
+            font-size: 11px;
+            color: #666;
+            background: #12121e;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .dos-breakdown {
+            font-size: 11px;
+            color: #a0a0c0;
+            line-height: 1.8;
+        }
+
+        /* ── WEEKLY DASHBOARD ── */
+        .weekly-target-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: #0a0a0f;
+            border-radius: 6px;
+            border: 1px solid #1e1e2e;
+        }
+        .weekly-target-check {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .weekly-target-check.done {
+            border-color: #00C896;
+            background: #00C896;
+        }
+        .weekly-target-label {
+            font-size: 11px;
+            color: #c0c0d8;
+            flex: 1;
+        }
+        .weekly-target-label.done {
+            color: #666;
+            text-decoration: line-through;
+        }
+        .weekly-target-freq {
+            font-size: 9px;
+            color: #555;
+        }
+        .session-input {
+            flex: 1;
+            padding: 8px 12px;
+            background: #12121e;
+            border: 1px solid #1e1e2e;
+            border-radius: 6px;
+            color: #e8e8f0;
+            font-size: 12px;
+            outline: none;
+        }
+        .session-input:focus { border-color: #6C63FF; }
+        .session-log-btn {
+            padding: 8px 16px;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .session-log-btn:active { opacity: 0.8; }
+
+        /* ── CAREER BRIDGE ── */
+        .career-vocab-item {
+            margin-bottom: 4px;
+            font-size: 11px;
+        }
+        .career-vocab-jp {
+            color: #00C896;
+            font-family: monospace;
+        }
+        .career-vocab-reading {
+            color: #666;
+        }
+        .career-phrase-item {
+            margin-bottom: 8px;
+        }
+        .career-phrase-jp {
+            font-weight: 700;
+            color: #e8e8f0;
+        }
+
+        /* ── FAILURE MODES ── */
+        .failure-warning {
+            padding: 8px 12px;
+            background: #0a0a0f;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255, 107, 107, 0.15);
+        }
+        .failure-recovery {
+            padding: 8px 12px;
+            background: #0a0a0f;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 200, 150, 0.15);
+        }
+        .failure-warning-title {
+            font-size: 10px;
+            color: #FF6B6B;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .failure-recovery-title {
+            font-size: 10px;
+            color: #00C896;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .failure-warning-text, .failure-recovery-text {
+            font-size: 10px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            color: #333;
+            font-size: 11px;
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+            }
+
+            .phase-selector {
+                margin-top: 12px;
+            }
+
+            .hero-top {
+                flex-direction: column;
+            }
+
+            .hero-mission {
+                max-width: 100%;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reality-grid, .japan-grid, .freelancing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ═══════════════════ AI Workflow ═══════════════════ */
+        .ai-guardrail-banner {
+            margin-bottom: 14px;
+            padding: 12px 14px;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
+            font-size: 11px;
+            color: #a0a0c0;
+            line-height: 1.6;
+        }
+
+        .ai-workflow-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px 14px;
+            border-bottom: 1px solid #1a1a26;
+        }
+
+        .ai-workflow-item:last-child { border-bottom: none; }
+
+        .ai-category-chip {
+            flex-shrink: 0;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 9px;
+            border-radius: 5px;
+            white-space: nowrap;
+            margin-top: 1px;
+        }
+
+        .ai-workflow-text {
+            font-size: 12px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════ KPI Dashboard ═══════════════════ */
+        .kpi-section {
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #1e1e2e;
+        }
+
+        .kpi-section-title {
+            font-weight: 800;
+            font-size: 13px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .kpi-section-sub {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+        }
+
+        .kpi-card {
+            background: #0a0a0f;
+            border: 1px solid #1e1e2e;
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+
+        .kpi-label {
+            font-size: 11px;
+            color: #a0a0c0;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            min-height: 30px;
+        }
+
+        .kpi-numbers {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+        }
+
+        .kpi-current {
+            font-size: 17px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .kpi-target {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .kpi-progress-bar {
+            height: 5px;
+            background: #1e1e2e;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .kpi-progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+
+        .kpi-controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .kpi-btn {
+            flex: 1;
+            background: #1e1e2e;
+            border: none;
+            color: #ccc;
+            padding: 7px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .kpi-btn:active { opacity: 0.7; }
+
+        /* ═══════════════════ Checklists (Admission Sprint / Health) ═══════════════════ */
+        .checklist-group {
+            margin-bottom: 18px;
+        }
+
+        .checklist-group-title {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6C63FF;
+            margin-bottom: 4px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #1e1e2e;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 9px 4px;
+            cursor: pointer;
+        }
+
+        .checklist-item .checkbox {
+            margin-top: 1px;
+        }
+
+        .checklist-item-text {
+            font-size: 12px;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .checklist-item.checked .checklist-item-text {
+            color: #555;
+            text-decoration: line-through;
+        }
+
+        /* ═══════════════════ Timeline ═══════════════════ */
+        .timeline-caveat {
+            margin-bottom: 20px;
+            padding: 12px 14px;
+            background: rgba(255, 159, 67, 0.08);
+            border: 1px solid rgba(255, 159, 67, 0.2);
+            border-radius: 8px;
+            font-size: 11px;
+            color: #a0a0c0;
+            line-height: 1.6;
+        }
+
+        .timeline-node {
+            display: flex;
+            gap: 14px;
+        }
+
+        .timeline-node-rail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            width: 14px;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .timeline-line {
+            width: 2px;
+            flex: 1;
+            background: #1e1e2e;
+            min-height: 40px;
+        }
+
+        .timeline-card {
+            flex: 1;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            border: 1px solid #1e1e2e;
+            background: #0e0e16;
+        }
+
+        .timeline-date {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .timeline-phase-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .timeline-phase-sub {
+            font-size: 11px;
+            color: #888;
+        }
+
+        /* ═══════════════════ Health & Checkpoints ═══════════════════ */
+        .wellbeing-section-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: #EC4899;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            margin-top: 4px;
+        }
+
+        .wellbeing-section-sub {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 14px;
+        }
+
+        .checkpoint-prompt-list {
+            margin-bottom: 14px;
+            padding: 12px 14px;
+            background: rgba(236, 72, 153, 0.06);
+            border: 1px solid rgba(236, 72, 153, 0.15);
+            border-radius: 8px;
+        }
+
+        .checkpoint-prompt-item {
+            font-size: 11px;
+            color: #a0a0c0;
+            line-height: 1.8;
+        }
+
+        .checkpoint-textarea {
+            width: 100%;
+            min-height: 90px;
+            background: #0a0a0f;
+            border: 1px solid #1e1e2e;
+            border-radius: 8px;
+            color: #e8e8f0;
+            padding: 10px 12px;
+            font-family: inherit;
+            font-size: 12px;
+            resize: vertical;
+            margin-bottom: 8px;
+        }
+
+        .checkpoint-textarea:focus { border-color: #EC4899; outline: none; }
+
+        .checkpoint-save-btn {
+            background: #EC4899;
+            border: none;
+            color: #fff;
+            padding: 9px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .checkpoint-save-btn:active { opacity: 0.8; }
+
+        .checkpoint-entry {
+            padding: 12px 14px;
+            background: #0a0a0f;
+            border: 1px solid #1e1e2e;
+            border-left: 3px solid #EC4899;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .checkpoint-entry-date {
+            font-size: 10px;
+            font-weight: 700;
+            color: #EC4899;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .checkpoint-entry-notes {
+            font-size: 12px;
+            color: #ccc;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .checkpoint-delete {
+            font-size: 10px;
+            color: #666;
+            cursor: pointer;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        .checkpoint-delete:hover { color: #FF6B6B; }
+
+        /* ═══════════════════ Financial Roadmap ═══════════════════ */
+        .financial-roadmap-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .financial-roadmap-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 10px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+        }
+
+        .financial-priority-num {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #00C896;
+            color: #06251d;
+            font-size: 11px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .financial-stage {
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .financial-detail {
+            font-size: 11px;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        // All phase data
+        const PHASES = [
+            {
+                id: 0,
+                label: "Phase 0",
+                title: "HSC 2026: Final Stretch → Phase 1 Bridge",
+                subtitle: "One more week of papers. Then no more holding back.",
+                period: "Now → ~Aug 15, 2026 · Result ~Oct–Nov 2026",
+                incomeTarget: "৳0",
+                incomeReality: { optimistic: "৳0", expected: "৳0", disaster: "৳0" },
+                color: "#6C63FF",
+                lightColor: "#f0eeff",
+                icon: "🌱",
+                mission: "This phase just shrank by about 10 months. The old plan assumed HSC in 2027 and paced everything to protect a year-long runway — that assumption is gone. You're sitting HSC 2026 right now: written papers run through ~Aug 8, practicals through ~Aug 15. For what's left, there's no 70/30 split to manage — it's 100% the exam for about two more weeks. The moment the last practical is done, Phase 1 starts. Don't wait for the official result to do that — the result (~Oct–Nov 2026) confirms something on paper; it doesn't gate whether you can open a Python tutorial.",
+                systemsStatus: { degree: "HSC — final papers", tech: "Starts full-time ~Aug 15", japanese: "N5 target", income: "Ignore for now", experience: "Building habits" },
+                dailyOS: {
+                    minimum: { total: "0min", breakdown: "Exam days: the paper only. Nothing else required." },
+                    normal: { total: "20min", breakdown: "10m Python → 10m Japanese, only on gap days between papers" },
+                    maximum: { total: "40min", breakdown: "20m Python → 20m Japanese, only after ~Aug 8 once written papers are done" }
+                },
+                doList: [
+                    "Now through ~Aug 8: finish the remaining written papers. Still 100% the priority — nothing below competes with it.",
+                    "~Aug 8–15: practicals. Same rule — finish them clean before touching anything else.",
+                    "The week practicals end, start Phase 1 (Python/FastAPI). A few days off is plenty — don't turn it into a long 'earned break.'",
+                    "Treat the ~2.5 months until the result (Oct–Nov) as extra Phase 1 runway, not dead time waiting for a piece of paper.",
+                    "Sleep 7-8 hours through the remaining papers — a bad final week costs more than any extra revision saves.",
+                    "Keep a mental shortlist of bachelor's-program options — don't act on it yet, just don't start from zero once Phase 1 begins.",
+                ],
+                dontList: [
+                    "Do NOT start Python/FastAPI before your last paper is written. Finish the exam, then pivot — not before.",
+                    "Do NOT wait for the official HSC result to start Phase 1 — the result doesn't unlock anything technical.",
+                    "Do NOT keep running the old 'protect energy across a year' pacing — that math doesn't apply with ~2 weeks left, not 10 months.",
+                    "Do NOT let anyone's 'relax until the result comes out' advice cost you 2.5 free months.",
+                ],
+                tips: [
+                    "This used to be a year-long dual-track phase. It's now a two-week finish line. Everything after it inherits the same ~10-month head start.",
+                    "The gap between your last practical and the official result is the most commonly wasted window in the whole HSC-to-career pipeline in Bangladesh. Most students idle through it — that's your edge if you don't.",
+                    "'HSC Result Published' is tracked below as a milestone, but by the time it actually lands, you should already be weeks into Phase 1 — track it, don't wait on it.",
+                ],
+                tracker: [
+                    { task: "Written papers completed (~Aug 8, 2026)", type: "milestone" },
+                    { task: "Practical exams completed (~Aug 15, 2026)", type: "milestone" },
+                    { task: "Phase 1 started the same week as the last practical", type: "milestone" },
+                    { task: "HSC Result Published (~Oct–Nov 2026)", type: "milestone" },
+                    { task: "Bachelor's degree program shortlisted for enrollment", type: "milestone" },
+                ],
+                resources: [
+                    { name: "Automate the Boring Stuff with Python", url: "https://automatetheboringstuff.com", note: "Free — start Ch.1 the week your last practical ends" },
+                    { name: "Anki (Japanese N5)", url: "https://apps.ankiweb.net", note: "Low priority until Phase 1 starts" },
+                    { name: "Tofugu Kana Guide", url: "https://www.tofugu.com/japanese/learn-hiragana/", note: "Free, master Hiragana + Katakana" },
+                    { name: "Git Basics — GitHub", url: "https://docs.github.com/en/get-started", note: "Just the basics: init, add, commit, push" },
+                ],
+                calendarEstimate: { range: "Now → ~Aug 15, 2026", confidence: "fixed", note: "These are real exam dates, not estimates." },
+                aiWorkflow: [
+                    { category: "Explain", detail: "When a Python error or a Japanese grammar point confuses you, paste it into Claude or ChatGPT and ask for a plain explanation before moving on — don't just skip the confusing part." },
+                    { category: "Study Aid", detail: "Ask AI to quiz you in short bursts — kana, basic Python syntax — during the 10-minute gaps between papers. Better use of the time than passive scrolling." },
+                    { category: "Plan Ahead", detail: "Use AI now to draft a shortlist of 5 Phase 1 project ideas that match your interests, so Day 1 of Phase 1 starts with a plan instead of a blank page." },
+                    { category: "Guardrail", detail: "This phase is about building the habit of asking AI 'why' before 'what' — that habit is worth more than any single answer it gives you." },
+                ],
+                kpis: [
+                    { label: "Hiragana + Katakana characters mastered", target: 92, unit: "" },
+                    { label: "\"Automate the Boring Stuff\" chapters read", target: 3, unit: "" },
+                    { label: "Bachelor's programs shortlisted", target: 3, unit: "" },
+                ],
+                scenario: {
+                    best: "Papers finished strong, practicals done by Aug 15. Phase 1 started that same week. By the time the result lands (Oct–Nov), you're 2-3 months into Python/FastAPI, not waiting on anything.",
+                    expected: "Papers done, a few rough ones. A short real break (days, not weeks) before Phase 1 starts. Result lands mid-way through Phase 1. Still roughly 10 months ahead of the old plan.",
+                    worst: "A paper goes badly, or the result disappoints in Oct–Nov. Skills path is UNAFFECTED — Phase 1 doesn't require an HSC grade to start or continue. Keep building; sort out the degree path in parallel.",
+                    key: "Phase 0 changed shape today, not just its dates. It was a year-long parallel-track phase built around waiting until 2027 — now it's a two-week finish line in 2026. Every phase after this one is already defined in relative months, not fixed calendar dates, so it automatically inherits this ~10-month head start without needing to be touched."
+                }
+            },
+            {
+                id: 1,
+                label: "Phase 1",
+                title: "Python Backend & Automation Foundations",
+                subtitle: "100% Python. FastAPI. PostgreSQL. Linear syntax fluency for DevOps + AI.",
+                period: "Post-HSC → Month 3",
+                incomeTarget: "৳0–৳15,000",
+                incomeReality: { optimistic: "৳5,000–৳15,000", expected: "৳0–৳5,000", disaster: "৳0 (no clients yet)" },
+                color: "#FF6B6B",
+                lightColor: "#fff0f0",
+                icon: "🐍",
+                mission: "This is your first real technical phase — and it's 100% Python. No Node.js. No Express. No JavaScript. No TypeScript. Python is your single language from here through DevOps scripting (Phase 4/5) and AI RAG pipelines (Phase 7). Splitting the foundation is inefficient. Master FastAPI, PostgreSQL, and automation — everything else is noise.",
+                systemsStatus: { degree: "Bachelor's enrollment", tech: "Python / FastAPI / PostgreSQL", japanese: "N5 → N4", income: "First Upwork profile", experience: "Backend & Automation projects" },
+                dailyOS: {
+                    minimum: { total: "45min", breakdown: "20m Python practice → 15m FastAPI tutorial → 10m Japanese (Anki + grammar)" },
+                    normal: { total: "90min", breakdown: "30m Python/FastAPI → 20m PostgreSQL → 20m build project → 20m Japanese" },
+                    maximum: { total: "3hr", breakdown: "1hr Python project → 45m FastAPI + DB → 30m scraping/automation → 45m Japanese" }
+                },
+                doList: [
+                    "Master Python deeply: OOP, decorators, generators, async/await, file handling, error handling",
+                    "Master FastAPI: build clean, high-performance REST APIs with auto-docs (Swagger/OpenAPI)",
+                    "Master PostgreSQL: tables, joins, indexes, transactions — relational databases are non-negotiable",
+                    "Learn Web Scraping & Automation: BeautifulSoup, Selenium, Playwright — high freelance demand",
+                    "Build 5+ backend/automation projects in Python — deployed live (Railway, Render, or Fly.io)",
+                    "Create Upwork profile by Month 3 — target Python automation and backend fix-it gigs",
+                    "Create LinkedIn and GitHub Portfolio — focus on Python system logic and clean code",
+                    "Buy a custom domain for your professional portfolio site",
+                    "Start structured Japanese — target JLPT N4 by end of Phase 1",
+                    "Enroll in a bachelor's degree program (priority: affordable + flexible)",
+                ],
+                dontList: [
+                    "Do NOT learn Node.js, Express, JavaScript, or TypeScript — Python is your only language now",
+                    "Do NOT obsess over React, Next.js, or deep UI/UX design — backend only",
+                    "Do NOT skip database fundamentals — relational DBs dominate the backend",
+                    "Do NOT build tutorial clones — build original Python tools that solve data problems",
+                    "Do NOT split your focus between Python and any JS framework — linear fluency matters",
+                ],
+                tips: [
+                    "Python is your DevOps scripting language, your backend language, AND your AI pipeline language. One language to rule them all.",
+                    "FastAPI official tutorial (fastapi.tiangolo.com) — complete it fully. Best Python backend framework for 2026.",
+                    "Clients pay heavily for Python backend logic, web scraping, and automation pipelines",
+                    "Deploy every project the day you finish it. Use Railway or Render for easy Python hosting",
+                    "On Upwork: bid on 'Python script', 'fix API', 'automation', or 'scraping' gigs to get your first review",
+                    "Python docs + FastAPI docs are better than any course. Read them like a book.",
+                ],
+                tracker: [
+                    { task: "5 live deployed Python/FastAPI projects", type: "portfolio" },
+                    { task: "Portfolio site live (clean, Python backend focus)", type: "portfolio" },
+                    { task: "Upwork profile created — Python Automation/Backend focus", type: "income" },
+                    { task: "LinkedIn + GitHub profile professional", type: "portfolio" },
+                    { task: "Can build a FastAPI REST API with PostgreSQL from scratch", type: "skill" },
+                    { task: "20+ Upwork proposals sent for Python automation/backend gigs", type: "income" },
+                    { task: "Japanese: N4 level (2,500 vocab, basic grammar)", type: "language" },
+                    { task: "Bachelor's degree enrollment confirmed", type: "milestone" },
+                ],
+                resources: [
+                    { name: "FastAPI Official Tutorial", url: "https://fastapi.tiangolo.com", note: "Complete Python backend framework" },
+                    { name: "Python Official Docs", url: "https://docs.python.org/3/tutorial/", note: "The language bible" },
+                    { name: "PostgreSQL Tutorial", url: "https://postgresqltutorial.com", note: "Relational DB bible" },
+                    { name: "Scraping with Python", url: "https://youtube.com", note: "Search for 'Real world scraping Python'" },
+                    { name: "Railway.app", url: "https://railway.app", note: "Easy Python backend deployment" },
+                ],
+                calendarEstimate: { range: "~Aug 2026 → ~Nov 2026", confidence: "high", note: "Near-term — should hold closely." },
+                aiWorkflow: [
+                    { category: "Explain", detail: "Paste full Python tracebacks into AI and ask 'explain what broke and why' before asking for the fix — the goal is pattern recognition for the next bug, not a one-off patch." },
+                    { category: "Debug", detail: "When FastAPI or PostgreSQL throws an unfamiliar error, ask AI to walk through the request/response or query lifecycle so you see where it failed, not just what to change." },
+                    { category: "Generate Tests", detail: "After writing a function, ask AI to draft pytest unit tests for it — then read every test and delete any that don't actually check something meaningful." },
+                    { category: "Docs", detail: "FastAPI and PostgreSQL docs are dense. Ask AI to summarize a specific page in plain terms, then verify against the original before relying on it." },
+                    { category: "Brainstorm", detail: "Before starting a new project, ask AI to sketch 2-3 possible file/folder structures and trade-offs — then choose one yourself instead of copying blindly." },
+                ],
+                kpis: [
+                    { label: "Python exercises solved", target: 300, unit: "" },
+                    { label: "Projects deployed live", target: 5, unit: "" },
+                    { label: "Git commits", target: 100, unit: "" },
+                    { label: "Upwork proposals sent", target: 20, unit: "" },
+                    { label: "FastAPI CRUD apps built", target: 1, unit: "" },
+                ],
+                scenario: {
+                    best: "Portfolio live with 5 solid Python/FastAPI projects. First Upwork client paying ৳3,000–৳8,000. N4 Japanese achieved. This is the top 20% outcome — most people get zero clients in Phase 1.",
+                    expected: "Portfolio building in progress. Zero freelance income. This is NORMAL. You're 3 months in — most successful freelancers take 6-12 months to get first client. Focus on Python skills, not income.",
+                    worst: "Struggling to finish projects. No portfolio. No income. This usually means you're trying to learn too many things at once. Drop everything except Python + FastAPI + PostgreSQL. Build 3 projects. Then add more.",
+                    key: "Phase 1 income is ৳0 for 80%+ of people. This is expected, not failure. If you need income, get a local junior job (৳25K–৳45K/mo) and build portfolio on evenings/weekends. The plan still works. Python-only focus means faster fluency into DevOps + AI phases."
+                }
+            },
+            {
+                id: 2,
+                label: "Phase 2",
+                title: "Infrastructure Merge (Docker + AWS)",
+                subtitle: "Stop building apps, start deploying production systems.",
+                period: "Month 4–7",
+                incomeTarget: "৳10,000–৳40,000",
+                incomeReality: { optimistic: "৳20,000–৳40,000", expected: "৳5,000–৳15,000", disaster: "৳0–৳5,000 (long client drought)" },
+                color: "#00C896",
+                lightColor: "#e6faf5",
+                icon: "⚙️",
+                mission: "Once you can build backend systems, you must learn to containerize and deploy them. You aren't just a guy who knows cloud theory; you are a developer who deploys their own production systems into the cloud.",
+                systemsStatus: { degree: "Year 1 studies", tech: "Docker + AWS + Terraform", japanese: "N4 → N3", income: "Regular automation gigs", experience: "Production-ready deployments" },
+                dailyOS: {
+                    minimum: { total: "45min", breakdown: "20m Docker practice → 15m AWS free tier → 10m Japanese" },
+                    normal: { total: "2hr", breakdown: "45m Docker (images/compose) → 30m AWS (EC2/S3) → 30m Terraform → 15m Japanese" },
+                    maximum: { total: "3hr", breakdown: "1hr Dockerize a project → 1hr AWS deployment → 30m Terraform → 30m Japanese" }
+                },
+                doList: [
+                    "Learn Docker: containers, images, multi-stage builds, Docker Compose",
+                    "Learn AWS Core: EC2, S3, RDS, IAM, VPC — the industry standard",
+                    "Learn Terraform: provision your infrastructure as code (IaC)",
+                    "Deploy your Phase 1 backend systems to AWS via Terraform and Docker",
+                    "Implement JWT authentication and secure API design (Python/FastAPI)",
+                    "Learn Pydantic deeply — Python's type safety is your backend contract",
+                    "Bid on 'Dockerize my app' or 'AWS setup' gigs on Upwork",
+                    "Start JLPT N3 preparation — daily Japanese practice continues",
+                ],
+                dontList: [
+                    "Do NOT skip Docker — it is the bridge to all modern infrastructure",
+                    "Do NOT use the AWS console for everything — move to CLI and Terraform early",
+                    "Do NOT ignore security: use environment variables, never hardcode secrets",
+                    "Do NOT get distracted by new frontend frameworks",
+                    "Do NOT neglect the documentation of your deployment process",
+                ],
+                tips: [
+                    "Mastering Docker + AWS makes you a 'Developer who Deploys', a much higher value tier",
+                    "Terraform: 'Terraform: Up & Running' is the best reference for IaC",
+                    "Use AWS Free Tier wisely, but don't be afraid to spend $5/mo for real practice",
+                    "Dockerize your existing projects first to understand the 'why'",
+                    "On Upwork: pitch to startups who need their dev environment standardized with Docker",
+                ],
+                tracker: [
+                    { task: "2+ backend apps containerized with Docker", type: "portfolio" },
+                    { task: "Infrastructure provisioned on AWS via Terraform", type: "skill" },
+                    { task: "Production-grade API deployed on EC2/RDS", type: "portfolio" },
+                    { task: "Authentication System (JWT) implemented securely", type: "skill" },
+                    { task: "Upwork: ৳20,000+ in a single month", type: "income" },
+                    { task: "Pydantic models: full type-safe API contracts", type: "skill" },
+                    { task: "Japanese: N3 study started, N4 solidified", type: "language" },
+                ],
+                resources: [
+                    { name: "Docker Docs / Get Started", url: "https://docker.com", note: "The only container source" },
+                    { name: "Adrian Cantrill AWS SAA", url: "https://learn.cantrill.io", note: "Best AWS education" },
+                    { name: "Terraform: Up & Running", url: "https://amazon.com", note: "IaC Bible" },
+                    { name: "Pydantic Official Docs", url: "https://docs.pydantic.dev", note: "Python type safety" },
+                    { name: "AWS Free Tier", url: "https://aws.amazon.com/free", note: "Sign up and explore" },
+                ],
+                calendarEstimate: { range: "~Nov 2026 → ~Mar 2027", confidence: "high", note: "Near-term — should hold closely." },
+                aiWorkflow: [
+                    { category: "Explain", detail: "Ask AI to explain unfamiliar Terraform plan/apply output line-by-line before you accept changes — Terraform mistakes can cost real AWS money." },
+                    { category: "Debug", detail: "Paste Docker build errors or a failing docker-compose.yml and ask AI to trace which layer or service is failing and why, not just for a corrected file." },
+                    { category: "Generate Drafts", detail: "Let AI draft a first-pass Dockerfile or Terraform module — then rewrite it yourself from scratch without looking, to prove you actually understand it." },
+                    { category: "Review", detail: "Ask AI to review an AWS IAM policy JSON for overly broad permissions before you attach it. Security review is a genuinely strong AI use case here." },
+                    { category: "Brainstorm", detail: "Sketch your AWS architecture (VPC, EC2, RDS, S3) with AI before provisioning anything — cheaper to redesign on paper than to rebuild live infrastructure." },
+                ],
+                kpis: [
+                    { label: "Docker images built & shipped", target: 10, unit: "" },
+                    { label: "AWS resources provisioned via Terraform", target: 15, unit: "" },
+                    { label: "Upwork proposals sent", target: 30, unit: "" },
+                    { label: "Type-safe Pydantic API models written", target: 15, unit: "" },
+                    { label: "Best single month income", target: 20000, unit: "৳" },
+                ],
+                scenario: {
+                    best: "First 1-2 freelance clients. Income: ৳8,000–৳15,000/mo. Systems running on AWS. Docker fluent. N3 Japanese in progress. This is the top 25% outcome for Phase 2.",
+                    expected: "No consistent clients yet. Income: ৳0–৳5,000/mo from occasional gigs. Skills are building. This is NORMAL — most freelancers take 6-12 months to get first paying client.",
+                    worst: "Zero income. 50+ proposals sent, no responses. This is the most common outcome. Solution: lower your rate to $5-8/hr for first 2-3 jobs just to get reviews. Or get a local junior job and freelance on weekends.",
+                    key: "Phase 2 income is unreliable by design. You're investing in skills that pay in Phase 4+. If you need survival income NOW, get a local job. The plan works with or without freelance income in these early phases."
+                }
+            },
+            {
+                id: 3,
+                label: "Phase 3",
+                title: "Production Backend Engineering",
+                subtitle: "Solve real problems. Build production-grade systems.",
+                period: "Month 8–11",
+                incomeTarget: "৳30,000–৳80,000",
+                incomeReality: { optimistic: "৳50,000–৳80,000", expected: "৳20,000–৳45,000", disaster: "৳0–৳20,000 (no clients for months)" },
+                color: "#FF9F43",
+                lightColor: "#fff8ee",
+                icon: "🏗️",
+                mission: "The gap between junior and senior is not frameworks — it is whether you can handle performance, security, and scale. This phase bridges your backend logic into production-ready infrastructure.",
+                systemsStatus: { degree: "Year 1–2 studies", tech: "Security + Redis + Docker + CI/CD", japanese: "N3 target", income: "Retainer clients", experience: "Production-quality work" },
+                dailyOS: {
+                    minimum: { total: "45min", breakdown: "20m security study (OWASP) → 15m Redis/CI-CD → 10m Japanese" },
+                    normal: { total: "2hr", breakdown: "40m build secure API → 30m Redis caching → 30m GitHub Actions pipeline → 20m Japanese" },
+                    maximum: { total: "3hr", breakdown: "1hr production-grade API → 45m CI/CD pipeline → 45m security hardening → 30m Japanese" }
+                },
+                doList: [
+                    "Study OWASP Top 10 security vulnerabilities: XSS, CSRF, SQL Injection, rate limiting",
+                    "Learn Redis for caching — used in virtually every serious production system",
+                    "Master Docker Compose: orchestrate multi-container environments locally",
+                    "Learn CI/CD basics with GitHub Actions: automate your testing and deployment",
+                    "Build a high-performance API with caching and security best practices",
+                    "Shift Upwork strategy from hourly gigs to project-based and retainer contracts",
+                    "Target JLPT N3 exam — prepare consistently",
+                    "Start exploring foundational network logic: how the internet handles backend traffic",
+                ],
+                dontList: [
+                    "Do NOT ignore error handling — try/catch, proper HTTP status codes everywhere",
+                    "Do NOT store passwords in plain text — ever. bcrypt is non-negotiable",
+                    "Do NOT deploy without environment variables (.env files, never hardcode secrets)",
+                    "Do NOT neglect the 'T-Shaped' approach: go deep on backend, broad on automation",
+                    "Do NOT underestimate English communication — at ৳80,000/month you're competing globally",
+                ],
+                tips: [
+                    "Read 'The Elements of Style' (Strunk & White) for English communication — one sitting, changes everything",
+                    "EXPLAIN ANALYZE in PostgreSQL shows why your query is slow — use it before optimizing anything",
+                    "Upstash (free tier) for Redis is easier than self-hosting — start there",
+                    "Docker Compose is your primary tool for orchestrating your dev environment",
+                    "Mastering security early makes your portfolio stand out to enterprise-level clients",
+                ],
+                tracker: [
+                    { task: "Production-grade API with Redis caching deployed", type: "portfolio" },
+                    { task: "CI/CD pipeline automated for a backend project", type: "skill" },
+                    { task: "Docker Compose running full local dev stack", type: "skill" },
+                    { task: "OWASP Top 10 studied and applied", type: "skill" },
+                    { task: "Upwork: ৳60,000+ in a month (consistent, 2 months)", type: "income" },
+                    { task: "JLPT N3 passed", type: "language" },
+                    { task: "First retainer client (monthly contract)", type: "income" },
+                ],
+                resources: [
+                    { name: "OWASP Top 10", url: "https://owasp.org/Top10", note: "Security bible, free" },
+                    { name: "Redis Crash Course — Traversy Media", url: "https://youtube.com", note: "1 hour, YouTube" },
+                    { name: "Docker for Web Developers — Bret Fisher", url: "https://udemy.com", note: "Udemy, ~$12" },
+                    { name: "GitHub Actions Docs", url: "https://docs.github.com/actions", note: "Official quickstart" },
+                    { name: "Web Dev Simplified — JWT Auth", url: "https://youtube.com", note: "Watch 3 times" },
+                ],
+                calendarEstimate: { range: "~Mar 2027 → ~Jul 2027", confidence: "good", note: "Solid estimate, but pace can already be drifting by here." },
+                aiWorkflow: [
+                    { category: "Security Review", detail: "Paste your API code and ask AI to check it against the OWASP Top 10 — then verify each flagged issue yourself. AI security review has both false positives and false negatives." },
+                    { category: "Generate Tests", detail: "Ask AI to generate edge-case tests for your endpoints (bad input, auth failures, rate-limit triggers) — these are the tests people skip and attackers exploit." },
+                    { category: "Debug", detail: "For a flaky CI/CD pipeline, paste the full GitHub Actions log and ask AI to isolate which step actually failed before you start changing YAML at random." },
+                    { category: "Explain", detail: "Ask AI to explain Redis caching strategies (cache-aside, write-through) for your specific use case — caching bugs are subtle and worth understanding deeply, not copying." },
+                    { category: "Client Work", detail: "Use AI to help draft retainer-contract proposals and scope documents for Upwork clients — but always give the final version your own read before it goes out." },
+                ],
+                kpis: [
+                    { label: "OWASP vulnerabilities tested against own code", target: 10, unit: "" },
+                    { label: "Endpoints with Redis caching implemented", target: 5, unit: "" },
+                    { label: "CI/CD pipelines built (GitHub Actions)", target: 3, unit: "" },
+                    { label: "Retainer / project-based contracts signed", target: 1, unit: "" },
+                    { label: "Best single month income", target: 60000, unit: "৳" },
+                ],
+                scenario: {
+                    best: "Consistent freelance + local work: ৳20,000–৳30,000/mo. Backend systems running with CI/CD. N3 passed. Docker fluent. This puts you above BD junior dev median.",
+                    expected: "Income at ৳8,000–৳15,000/mo from freelance + maybe a local part-time gig. Skills are real even if income isn't. N3 in progress.",
+                    worst: "Income at ৳0–৳5,000/mo. No clients. This is the most dangerous phase financially. Get a local junior job (৳25K–৳45K/mo) immediately. Skills can't develop if you can't eat.",
+                    key: "Phase 3 is where most people quit — not from lack of skill, but from lack of income. The solution is NOT 'try harder on Upwork.' The solution is 'get a local job for survival income and freelance on the side.' There is no shame in this."
+                }
+            },
+            {
+                id: 4,
+                label: "Phase 4",
+                title: "Cloud Foundation (AWS + Networking)",
+                subtitle: "Enter the cloud. Become someone who can run systems, not just build them.",
+                period: "Month 12–18",
+                incomeTarget: "৳10,000–৳40,000 (remote + local combined)",
+                incomeReality: { optimistic: "৳25,000–৳40,000", expected: "৳10,000–৳25,000", disaster: "৳5,000–৳15,000" },
+                color: "#4ECDC4",
+                lightColor: "#edfafa",
+                icon: "☁️",
+                mission: "Now you enter cloud. AWS is the global standard. Every serious tech company in Japan uses cloud infrastructure. This phase makes you hireable for remote jobs paying in USD.",
+                systemsStatus: { degree: "Year 2 studies", tech: "AWS + Linux deep + Nginx + Terraform", japanese: "N3 → N2 prep", income: "Remote contracts", experience: "Cloud deployments" },
+                dailyOS: {
+                    minimum: { total: "1hr", breakdown: "30m Linux practice → 20m AWS CLI → 10m Japanese" },
+                    normal: { total: "2.5hr", breakdown: "45m Linux (systemd/networking) → 45m AWS (EC2/VPC/S3) → 30m Nginx + SSL → 30m Japanese" },
+                    maximum: { total: "4hr", breakdown: "1.5hr AWS hands-on → 1hr Terraform IaC → 45m Nginx deployment → 1hr Japanese" }
+                },
+                doList: [
+                    "Master Ubuntu/Debian Linux deeply: processes, permissions, cron, systemd, journalctl, firewalls",
+                    "Learn Networking: IP, DNS, HTTP/HTTPS, TCP, UDP, NAT, VPN, Load Balancer — most DevOps failures are network failures",
+                    "Learn Nginx: production web server, reverse proxy, SSL with Let's Encrypt (free)",
+                    "Master AWS core services: EC2, S3, IAM, VPC, Route53, CloudWatch, RDS, CloudFront",
+                    "Learn Terraform: write infrastructure as code — provision VPC, EC2, RDS from .tf files",
+                    "Earn AWS Solutions Architect Associate (SAA) certification — globally recognized in Japan",
+                    "Rent a Hetzner VPS (৳500–৳900/month) — SSH in, deploy a real app manually first",
+                    "Start Python automation/scripting projects: file organizer, log analyzer, server monitor",
+                    "Begin JLPT N2 preparation — this is the big one that opens Japanese companies",
+                ],
+                dontList: [
+                    "Do NOT jump into Kubernetes before mastering Docker, Linux, and Networking",
+                    "Do NOT use only the AWS console — everything must also be doable via CLI and Terraform",
+                    "Do NOT skip the SAA exam — it is the credential that makes your CV credible to Japanese recruiters",
+                    "Do NOT neglect the VPS hands-on work — theory without deployment is worthless",
+                    "Do NOT use Azure or GCP as your primary — AWS dominates Japan's market",
+                ],
+                tips: [
+                    "Adrian Cantrill's AWS SAA course (learn.cantrill.io, ~$40) is the best — better than A Cloud Guru",
+                    "KodeKloud (~$20/month) gives browser-based hands-on labs for Docker, K8s, Terraform, Linux — worth every taka",
+                    "Hetzner is cheaper than AWS for practice VPS — use it to deploy your real apps",
+                    "Terraform: 'Terraform: Up & Running' by Yevgeniy Brikman is the standard reference",
+                    "Destroy and recreate your Terraform infrastructure 3 times — muscle memory is the goal",
+                    "For Upwork DevOps niche: 'set up CI/CD for my startup', 'migrate to AWS' — pay ৳30,000–৳80,000 each",
+                ],
+                tracker: [
+                    { task: "Personal website deployed on AWS (EC2 + Nginx + SSL)", type: "portfolio" },
+                    { task: "AWS SAA-C03 Certification passed", type: "milestone" },
+                    { task: "Terraform: can provision VPC + EC2 + RDS from scratch", type: "skill" },
+                    { task: "Python projects: 3+ automation scripts deployed", type: "skill" },
+                    { task: "Networking: understand DNS, subnetting, HTTP flow without reference", type: "skill" },
+                    { task: "Bachelor's degree: Year 2 on track", type: "milestone" },
+                    { task: "Japanese: N2 preparation started, N3 solidified", type: "language" },
+                    { task: "Upwork: DevOps gig successfully completed", type: "income" },
+                ],
+                resources: [
+                    { name: "Adrian Cantrill AWS SAA", url: "https://learn.cantrill.io", note: "~$40, best available" },
+                    { name: "KodeKloud", url: "https://kodekloud.com", note: "~$20/mo, hands-on labs" },
+                    { name: "Terraform: Up & Running", url: "https://amazon.com", note: "Standard Terraform book" },
+                    { name: "Linux Command Line — William Shotts", url: "https://linuxcommand.org", note: "Free online" },
+                    { name: "Nginx Official Docs", url: "https://nginx.org/en/docs/", note: "Production web server" },
+                ],
+                calendarEstimate: { range: "~Jul 2027 → ~Feb 2028", confidence: "moderate", note: "A full phase out — treat the specific months as a rough guide, not a deadline." },
+                aiWorkflow: [
+                    { category: "Explain", detail: "Ask AI to explain networking concepts (subnetting, routing tables, NAT) using your actual VPC design as the example. Abstract explanations don't stick — your own diagram does." },
+                    { category: "Debug", detail: "Paste Nginx config or SSL/Let's Encrypt errors and ask AI to explain what the server is actually trying to do at each directive before changing anything." },
+                    { category: "Generate Drafts", detail: "Let AI draft a first-pass Terraform module for a VPC + EC2 + RDS setup — then destroy it and rebuild the same thing from memory to actually learn it." },
+                    { category: "Exam Prep", detail: "For AWS SAA practice questions you get wrong, ask AI to explain why the correct answer is right AND why your answer was wrong. The second part is where the learning is." },
+                    { category: "Brainstorm", detail: "Before deploying, sketch your architecture with AI and ask 'what breaks this at 10x traffic?' — thinking about scale early is cheap; retrofitting it later isn't." },
+                ],
+                kpis: [
+                    { label: "AWS SAA practice exams scored 80%+", target: 3, unit: "" },
+                    { label: "Terraform modules written from scratch", target: 5, unit: "" },
+                    { label: "Python automation scripts deployed", target: 3, unit: "" },
+                    { label: "VPS/EC2 deployments with Nginx + SSL", target: 2, unit: "" },
+                    { label: "Subnetting/networking practice problems solved", target: 20, unit: "" },
+                ],
+                scenario: {
+                    best: "AWS SAA passed. Real app running on AWS with Nginx + SSL. Terraform automated. Combined income: ৳25,000–৳40,000/mo. Bachelor's Year 2 on track.",
+                    expected: "SAA failed first attempt (common — pass rate ~60-70%). Retake in 3 months. Combined income: ৳10,000–৳25,000/mo. Cloud deployments still happening. Skills accumulating regardless.",
+                    worst: "SAA not yet attempted. No freelance clients. Income: ৳5,000–৳15,000 from local junior job. This is normal for Phase 4 — you're still building. The SAA can wait until skills are ready.",
+                    key: "AWS SAA is valuable for Japan applications but costs ~$150 (৳18,000). Don't attempt until you've actually used AWS hands-on for 3+ months. A failed attempt wastes money you don't have. Build skills first, certify when ready."
+                }
+            },
+            {
+                id: 5,
+                label: "Phase 5",
+                title: "Containers + CI/CD",
+                subtitle: "Automate everything. Let machines do the deployment.",
+                period: "Month 19–24",
+                incomeTarget: "৳15,000–৳60,000 (remote + local combined)",
+                incomeReality: { optimistic: "৳40,000–৳60,000", expected: "৳20,000–৳35,000", disaster: "৳10,000–৳20,000" },
+                color: "#A855F7",
+                lightColor: "#f5eeff",
+                icon: "🔄",
+                mission: "This is where money starts appearing at scale. Companies pay specifically for automation. CI/CD means every code push deploys itself. This skill is rare, valued, and directly maps to Japan's SRE roles.",
+                systemsStatus: { degree: "Year 2–3 studies", tech: "Docker advanced + GitHub Actions + Monitoring", japanese: "N2 exam prep", income: "Senior contracts", experience: "CI/CD pipelines in production" },
+                dailyOS: {
+                    minimum: { total: "1hr", breakdown: "30m Docker advanced → 20m GitHub Actions → 10m Japanese" },
+                    normal: { total: "2.5hr", breakdown: "45m multi-stage Docker → 45m CI/CD pipeline → 30m Prometheus/Grafana → 30m Japanese" },
+                    maximum: { total: "4hr", breakdown: "1.5hr full CI/CD pipeline → 1hr monitoring stack → 1hr DB backup automation → 30m Japanese" }
+                },
+                doList: [
+                    "Master Docker advanced: multi-stage builds, image optimization, Docker networking, volumes",
+                    "Build GitHub Actions pipelines: Push → Test → Build Docker image → Deploy automatically",
+                    "Learn Prometheus + Grafana: metrics collection, dashboards, alert rules",
+                    "Set up monitoring alerts: Telegram notification when server CPU > 80%",
+                    "Build: Docker Compose running Next.js + PostgreSQL + Redis + Nginx + backup to S3",
+                    "Automate database backups to AWS S3 with a cron job",
+                    "Build a complete CI/CD pipeline for one of your real applications",
+                    "[Plan B / Optional] Register for ITPEC FE Examination (April sitting) — expect to map the battlefield",
+                    "Intensify JLPT N2 preparation — this is the Japan language key",
+                ],
+                dontList: [
+                    "Do NOT skip monitoring — companies pay you to know when things break before clients do",
+                    "Do NOT treat the first FE exam attempt as a pass/fail — treat it as a recon mission (if you choose to sit it)",
+                    "Do NOT rush into Kubernetes until Docker and CI/CD are solid",
+                    "Do NOT build CI/CD for only toy projects — connect it to a real deployed app",
+                    "Do NOT let a failed FE attempt demoralize you — the degree path is your primary route and it's still fully open",
+                ],
+                tips: [
+                    "TechWorld with Nana (YouTube) — best DevOps educator on YouTube. Watch her Prometheus + Grafana series",
+                    "GitHub Actions official docs are excellent — build your first workflow from the quickstart",
+                    "FE Exam (if attempted): collect 'New FE Text Book Vol. 1 & 2' from BDITEC. Solve ALL past papers (2010–2024) obsessively",
+                    "FE Morning Session: discrete math, business strategy, corporate hierarchy — these are not programming questions. Study them separately",
+                    "FE Afternoon Session: data structures, algorithms, SQL, pseudo-code — this is your home turf as a developer. Should feel natural by now",
+                    "Pass rate in Bangladesh: 9.2%–25.4%. The ITPEC FE exam is extremely difficult, with a pass rate in Bangladesh often below 15%. Treat it like a university final, not a certification quiz",
+                    "Remember: the bachelor's degree is your PRIMARY Japan visa path. FE is an optional accelerator/plan B. Failing FE does NOT block Japan if your degree is on track.",
+                ],
+                tracker: [
+                    { task: "Complete CI/CD pipeline: push → test → deploy", type: "portfolio" },
+                    { task: "Prometheus + Grafana monitoring dashboard live", type: "portfolio" },
+                    { task: "Docker Compose: full stack with 4+ services running", type: "skill" },
+                    { task: "Database auto-backup to S3 running in production", type: "skill" },
+                    { task: "[Optional] ITPEC FE Exam attempted (April) — results analyzed", type: "milestone" },
+                    { task: "Upwork: ৳1,00,000+ in a month (first time)", type: "income" },
+                    { task: "JLPT N2 study: formal preparation program enrolled", type: "language" },
+                ],
+                resources: [
+                    { name: "TechWorld with Nana — YouTube", url: "https://youtube.com", note: "Best DevOps educator" },
+                    { name: "GitHub Actions Docs", url: "https://docs.github.com/actions", note: "Official quickstart" },
+                    { name: "BDITEC Past Exam Papers", url: "https://bditec.gov.bd", note: "Download ALL years (FE Plan B only)" },
+                    { name: "ITPEC Learning Materials", url: "https://itpec.org/about/learning-materials.html", note: "Official FE resources" },
+                    { name: "Lightworks e-learning", url: "https://itpec.org", note: "FE online prep (optional)" },
+                ],
+                calendarEstimate: { range: "~Feb 2028 → ~Aug 2028", confidence: "moderate", note: "A full phase out — treat the specific months as a rough guide, not a deadline." },
+                aiWorkflow: [
+                    { category: "Generate Drafts", detail: "Let AI draft your first GitHub Actions workflow YAML — then trace through it step by step out loud until you could rewrite it blind." },
+                    { category: "Debug", detail: "When a pipeline fails, paste the exact log output (not a summary) and ask AI to isolate the failing step. Vague descriptions get vague answers." },
+                    { category: "Generate Configs", detail: "Ask AI to draft Prometheus alert rules and Grafana dashboard JSON for your specific metrics — then adjust thresholds based on what you actually observe, not defaults." },
+                    { category: "Explain", detail: "Ask AI to walk through what a multi-service Docker Compose file does, service by service, before you extend it further." },
+                    { category: "FE Exam (Optional)", detail: "If attempting the FE exam, use AI to explain past-paper questions you got wrong — especially discrete-math and business-strategy sections that don't feel like 'programmer' territory." },
+                ],
+                kpis: [
+                    { label: "CI/CD pipeline live in production", target: 1, unit: "" },
+                    { label: "Prometheus/Grafana dashboards built", target: 2, unit: "" },
+                    { label: "Docker Compose stack (4+ services) running", target: 1, unit: "" },
+                    { label: "Automated DB backups running in production", target: 1, unit: "" },
+                    { label: "Best single month income", target: 100000, unit: "৳" },
+                ],
+                scenario: {
+                    best: "CI/CD running in production. Monitoring live. Bachelor's Year 2–3 on track. Combined income: ৳40,000–৳60,000/mo. N2 prep underway. (FE optional — pass is a bonus, not required.)",
+                    expected: "FE first attempt failed or not attempted (80-85% fail rate in BD — this is normal). Reattempt in October OR skip and rely on degree path. Combined income: ৳20,000–৳35,000/mo. Skills are independent of FE result. Degree path is primary.",
+                    worst: "No freelance clients for 3+ months. Income: ৳10,000–৳20,000 from local part-time work. FE exam not attempted or failed. This is the 'valley' — push through. Get a local junior job for stability. Degree path is STILL open — this is your primary Japan route.",
+                    key: "The FE exam is an OPTIONAL Plan B for Japan. Your PRIMARY path is the bachelor's degree — it's simpler, more recognized, and more reliable. Pursue both in parallel if you want, but never sacrifice degree progress for FE prep. If freelance income is zero, get a local job. Survival first, Japan second."
+                }
+            },
+            {
+                id: 6,
+                label: "Phase 6",
+                title: "Infrastructure as Code + Kubernetes",
+                subtitle: "The dragon appears. Approach with respect, not fear.",
+                period: "Month 25–30",
+                incomeTarget: "৳20,000–৳70,000 (remote + local combined)",
+                incomeReality: { optimistic: "৳50,000–৳70,000", expected: "৳25,000–৳45,000", disaster: "৳15,000–৳25,000" },
+                color: "#F97316",
+                lightColor: "#fff4ee",
+                icon: "🐉",
+                mission: "Kubernetes is the final technical gate before senior cloud engineering. Do NOT rush here. Only approach after Linux, Docker, Networking, and AWS are solid. The people who skip to Kubernetes drown.",
+                systemsStatus: { degree: "Year 3 studies", tech: "Kubernetes + Helm + Terraform advanced", japanese: "N2 exam attempt", income: "Senior remote contracts", experience: "Production Kubernetes" },
+                dailyOS: {
+                    minimum: { total: "1hr", breakdown: "30m K8s pods/deployments → 20m Terraform modules → 10m Japanese" },
+                    normal: { total: "3hr", breakdown: "1hr K8s (services/ingress/Helm) → 45m Terraform (state/S3 backend) → 45m CI/CD → 30m Japanese" },
+                    maximum: { total: "4hr", breakdown: "1.5hr 3-tier app in K8s → 1hr Terraform full infra → 1hr pipeline automation → 30m Japanese" }
+                },
+                doList: [
+                    "Learn Kubernetes fully: Pods, Deployments, Services, Ingress, Helm, Horizontal Pod Autoscaler",
+                    "Start with k3s locally, then graduate to AWS EKS",
+                    "Build: 3-tier application (frontend + backend + DB) inside Kubernetes",
+                    "Watch Kubernetes self-heal: crash a pod deliberately and watch it restart automatically",
+                    "Advanced Terraform: modules, state management, remote backends in S3",
+                    "Build Terraform config for VPC + Subnet + EC2 + Security Group — no clicking required",
+                    "Deploy your full CI/CD pipeline: Code → Test → Docker → ECR → Kubernetes deployment",
+                    "Sit JLPT N2 exam — this is the credential that opens mid-sized Japanese tech companies",
+                    "[Plan B / Optional] Re-attempt ITPEC FE Examination (October) — only if you want the FE path; degree path is primary",
+                ],
+                dontList: [
+                    "Do NOT treat Kubernetes as just 'Docker but bigger' — it is a different philosophy",
+                    "Do NOT skip Helm — managing raw K8s YAML at scale is painful without it",
+                    "Do NOT assume FE pass is required for Japan — the bachelor's degree is your primary visa path",
+                    "Do NOT apply to Japanese companies yet — wait for the full package (degree OR FE + portfolio + N2/N3)",
+                ],
+                tips: [
+                    "Kubernetes official interactive tutorial (kubernetes.io/docs) is surprisingly good — start there",
+                    "k3s is Kubernetes without the complexity — run it on your VPS to practice everything real",
+                    "The moment Kubernetes automatically restarts your crashed pod will feel like magic — let it",
+                    "For FE afternoon session (if attempted): data structures (hash maps, trees, queues) are the backbone — drill them",
+                    "JLPT N2 requires ~600 hours of study total. If N3 is done, you need ~300 more hours. Plan accordingly",
+                    "N2 is a gigantic advantage at Japanese companies. N3 is good. N4 is the minimum to be taken seriously",
+                    "Japan visa reality check: You need ONE of (bachelor's degree) OR (FE cert) OR (10yr experience). Degree is the most reliable. FE is optional Plan B.",
+                ],
+                tracker: [
+                    { task: "3-tier app running in Kubernetes on AWS EKS", type: "portfolio" },
+                    { task: "Kubernetes: pods auto-healing demonstrated", type: "skill" },
+                    { task: "Terraform: full AWS infrastructure via code only", type: "skill" },
+                    { task: "Helm: app deployed and managed with Helm charts", type: "skill" },
+                    { task: "Bachelor's degree: Year 3 on track for completion", type: "milestone" },
+                    { task: "JLPT N2 Exam attempted", type: "language" },
+                    { task: "GitHub: 6+ production-quality projects documented", type: "portfolio" },
+                    { task: "Income: ৳1,50,000+ monthly (consistent)", type: "income" },
+                ],
+                resources: [
+                    { name: "Kubernetes Official Docs Tutorial", url: "https://kubernetes.io/docs", note: "Interactive, free" },
+                    { name: "KodeKloud K8s Labs", url: "https://kodekloud.com", note: "Best hands-on K8s practice" },
+                    { name: "Helm Official Docs", url: "https://helm.sh/docs", note: "Free, complete" },
+                    { name: "BDITEC FE Past Papers", url: "https://bditec.gov.bd/past-exam-questions", note: "Download all years (FE Plan B only)" },
+                ],
+                calendarEstimate: { range: "~Aug 2028 → ~Feb 2029", confidence: "low", note: "Two full phases out. Freelance pace, local-job detours, and life will have already reshaped this — use the relative months, not this date." },
+                aiWorkflow: [
+                    { category: "Debug", detail: "Paste `kubectl describe pod` output when something crashes and ask AI to explain what it's telling you — Kubernetes error messages are notoriously unclear on their own." },
+                    { category: "Explain", detail: "Ask AI to explain the gap between what you expected a Helm chart to deploy and what actually got created. That gap is usually where the learning is." },
+                    { category: "Generate Drafts", detail: "Let AI draft a first-pass Helm chart or K8s manifest — then annotate every field yourself with what it does before using it for anything real." },
+                    { category: "Review", detail: "Ask AI to review a Terraform module for state-management or backend-config mistakes before you apply it against real infrastructure." },
+                    { category: "Cross-Training", detail: "Use AI to quiz you on Kubernetes concepts in short Q&A bursts — the same active-recall technique works for JLPT N2 vocab. Alternate between them in study blocks." },
+                ],
+                kpis: [
+                    { label: "Kubernetes deployments managed via Helm", target: 3, unit: "" },
+                    { label: "Terraform-only AWS environment (zero console clicks)", target: 1, unit: "" },
+                    { label: "GitHub production-quality projects documented", target: 6, unit: "" },
+                    { label: "Deliberate pod-failure/recovery drills performed", target: 5, unit: "" },
+                    { label: "Consistent monthly income", target: 150000, unit: "৳" },
+                ],
+                scenario: {
+                    best: "Bachelor's degree on track for completion. JLPT N2 passed or close. Kubernetes in production. Combined income: ৳50,000–৳70,000/mo. Japan application phase can begin with strong portfolio. (FE pass would be a bonus, not required.)",
+                    expected: "FE failed or not attempted — this is fine. Combined income: ৳25,000–৳45,000/mo. Japan path via degree is still fully open. Degree completion is your primary visa key.",
+                    worst: "FE failed twice (or not attempted). No Japan-bound income yet via FE. BUT: local job at ৳45,000–৳80,000/mo (mid-level DevOps in BD per Glassdoor) + freelance. Skills are real. Japan path still open via degree completion — this is your primary route.",
+                    key: "The FE exam is an OPTIONAL Plan B — not the only path. A bachelor's degree is your PRIMARY Japan visa route: simpler, more recognized, more reliable. Pursue FE only as a parallel bonus. The FE pass rate in Bangladesh is ~15-19% — treat any attempt as reconnaissance, not a pass/fail moment."
+                }
+            },
+            {
+                id: 7,
+                label: "Phase 7",
+                title: "AI & System Design Engineering",
+                subtitle: "Build systems that think. Become the engineer companies fight over.",
+                period: "Month 31–42",
+                incomeTarget: "৳40,000–৳120,000 (remote + local combined)",
+                incomeReality: { optimistic: "৳80,000–৳120,000", expected: "৳40,000–৳70,000", disaster: "৳25,000–৳40,000 (freelance dry spell)" },
+                color: "#6366F1",
+                lightColor: "#e6fafd",
+                icon: "🧠",
+                mission: "This phase does not start from zero in AI. It starts from you — a full-stack developer and DevOps engineer — learning to deploy AI as a tool in production systems. That combination commands the highest rates in 2026.",
+                systemsStatus: { degree: "Year 3–4, near completion", tech: "FastAPI + RAG + Agents + MLOps", japanese: "N2 achieved or near", income: "AI integration contracts", experience: "AI systems in production" },
+                dailyOS: {
+                    minimum: { total: "1hr", breakdown: "30m FastAPI async → 20m RAG pipeline → 10m Japanese" },
+                    normal: { total: "3hr", breakdown: "1hr RAG (embed/query/LLM) → 45m AI agent (LangChain) → 45m system design study → 30m Japanese" },
+                    maximum: { total: "4hr", breakdown: "1.5hr AI SaaS build → 1hr vector DB + fine-tuning → 1hr MLOps pipeline → 30m Japanese" }
+                },
+                doList: [
+                    "Master FastAPI: async Python APIs, dependency injection, Pydantic models, auto-documentation",
+                    "Integrate OpenAI and Anthropic APIs: prompt engineering, function calling, cost management",
+                    "Learn LangChain / LlamaIndex for AI pipelines, agents, and RAG systems",
+                    "Learn Vector Databases: ChromaDB, Pinecone, pgvector (PostgreSQL extension)",
+                    "Build a complete RAG pipeline: PDF → chunk → embed → ChromaDB → LLM → grounded answer",
+                    "Build an AI agent with 3+ tools: web search, calculator, database query",
+                    "Learn Ollama: run local models (Llama 3, Mistral) — for clients who need data privacy",
+                    "Learn QLoRA fine-tuning on Google Colab — adapt models to specific domains",
+                    "Study System Design: monoliths, microservices, event-driven, queues, caching (ByteByteGo)",
+                    "Build a complete AI SaaS: auth + payments + RAG + analytics + CI/CD + monitoring",
+                ],
+                dontList: [
+                    "Do NOT try to become a data scientist — you are an AI Integration Engineer, not a researcher",
+                    "Do NOT ignore MLOps — deploying AI models uses all your DevOps skills, extend them",
+                    "Do NOT neglect cost management on AI APIs — uncontrolled token usage can drain budgets fast",
+                    "Do NOT build AI demos — build AI features that solve actual business problems",
+                ],
+                tips: [
+                    "Andrej Karpathy's 'Neural Networks: Zero to Hero' (YouTube) — the best conceptual AI foundation ever made, free",
+                    "FastAPI official tutorial (fastapi.tiangolo.com/tutorial) — complete it fully before building anything",
+                    "A RAG system for a company's documents is the #1 requested AI feature from businesses in 2026",
+                    "Google Colab Pro (~৳1,100/month) gives GPU access for fine-tuning — worth it for Phase 7",
+                    "A deployed RAG system solving a real business problem is worth ৳50,000–৳1,50,000 to a client",
+                    "LangGraph and CrewAI for agents — these are the emerging standards",
+                    "Stop selling code. Start selling solutions: 'AI Knowledge Base Builder' > 'React Developer'",
+                ],
+                tracker: [
+                    { task: "RAG pipeline: PDF → embed → query → grounded LLM answer", type: "portfolio" },
+                    { task: "AI agent: 3+ tools, multi-step task completion", type: "portfolio" },
+                    { task: "Local LLM via Ollama running offline (data privacy)", type: "skill" },
+                    { task: "QLoRA fine-tune on custom dataset via Colab", type: "skill" },
+                    { task: "Complete AI SaaS: auth + payments + RAG + monitoring", type: "portfolio" },
+                    { task: "FastAPI: production API with Swagger docs deployed", type: "skill" },
+                    { task: "Upwork: first AI integration contract secured", type: "income" },
+                    { task: "Bachelor's degree on track for completion", type: "milestone" },
+                ],
+                resources: [
+                    { name: "Karpathy — Neural Networks: Zero to Hero", url: "https://youtube.com", note: "Free YouTube" },
+                    { name: "FastAPI Official Tutorial", url: "https://fastapi.tiangolo.com/tutorial", note: "Free, complete" },
+                    { name: "Hugging Face Course", url: "https://huggingface.co/learn", note: "Free, transformers + fine-tuning" },
+                    { name: "LangChain Docs", url: "https://python.langchain.com/docs", note: "Official reference" },
+                    { name: "Google Colab Pro", url: "https://colab.research.google.com", note: "~৳1,100/month for GPU" },
+                ],
+                calendarEstimate: { range: "~Feb 2029 → ~Feb 2030", confidence: "low", note: "Two-plus phases out. Freelance pace, local-job detours, and life will have already reshaped this — use the relative months, not this date." },
+                aiWorkflow: [
+                    { category: "Prompt Iteration", detail: "Treat your own prompts like code: version them, test against edge cases, and log which changes actually improved output before shipping a prompt change to production." },
+                    { category: "Debug", detail: "When a RAG pipeline returns a wrong or ungrounded answer, ask AI to help you inspect the retrieved chunks first. Most 'AI is wrong' bugs are actually retrieval bugs." },
+                    { category: "Generate Tests", detail: "Ask AI to help write eval scripts for your own AI features (does the agent pick the right tool? does the RAG answer cite the right source?) — untested AI features are the ones that embarrass you in front of clients." },
+                    { category: "Cost Review", detail: "Ask AI to review your token usage patterns and suggest where caching, shorter context, or a cheaper model would cut cost without hurting quality." },
+                    { category: "Guardrail", detail: "You're now building the exact kind of tool you've used to learn since Phase 1. Hold your own AI features to the same 'can I explain every part of this' standard." },
+                ],
+                kpis: [
+                    { label: "RAG pipelines built end-to-end", target: 1, unit: "" },
+                    { label: "AI agents with 3+ tools built", target: 1, unit: "" },
+                    { label: "Vector DB integrations (Chroma/Pinecone/pgvector)", target: 2, unit: "" },
+                    { label: "Fine-tuning runs completed (QLoRA via Colab)", target: 1, unit: "" },
+                    { label: "AI integration contracts secured", target: 1, unit: "" },
+                ],
+                scenario: {
+                    best: "AI integration contract secured. Combined remote + local income: ৳80,000–৳120,000/mo. Degree nearing completion. Japan applications live. This puts you in the top 10% of BD tech earners.",
+                    expected: "Steady DevOps/full-stack work. Combined income: ৳40,000–৳70,000/mo. AI skills are additive, not replacement. Japan applications possible if FE passed or degree complete.",
+                    worst: "Income at ৳25,000–৳40,000/mo (local job + sporadic freelance). Still above BD median for tech. Japan path delayed but not closed — keep building portfolio and retry FE exam.",
+                    key: "By Phase 7, your combined skill set (backend + cloud + AI) is rare in Bangladesh. Even in the worst case, you earn above the BD tech median (৳25K–৳45K for mid-level per Glassdoor 2025). The ceiling is high; the floor is survivable."
+                }
+            },
+            {
+                id: 8,
+                label: "Phase 8",
+                title: "Japan Strike → Relocation",
+                subtitle: "Present the package. Trigger the visa. Execute the move.",
+                period: "Year 4–5 (2029–2030)",
+                incomeTarget: "¥4.5M–¥5.5M JPY (realistic first Japan job)",
+                incomeReality: { optimistic: "¥5.5M–¥6.5M", expected: "¥4.5M–¥5.5M", disaster: "¥4.1M (25th percentile) or no offer" },
+                longTermNote: "¥8M–¥12M after 3-5 years in Japan. ¥10M+ requires senior/staff level or FAANG Japan. Source: Levels.fyi Tokyo 2026, JapanDev 2026.",
+                color: "#EC4899",
+                lightColor: "#fdf0f7",
+                icon: "🇯🇵",
+                mission: "You are not a desperate junior seeking a visa escape. You are an established engineer with verified international income, choosing to bring your skills to Japan. This framing is everything.",
+                systemsStatus: { degree: "Bachelor's completed ✓ (PRIMARY)  OR  ITPEC FE passed ✓ (Plan B)", tech: "Full Stack + DevOps + AI", japanese: "N2/N3 achieved", income: "৳2,00,000+/month remotely", experience: "3+ years verifiable" },
+                dailyOS: {
+                    minimum: { total: "30min", breakdown: "15m Japanese (keigo/workplace phrases) → 15m interview prep" },
+                    normal: { total: "2hr", breakdown: "45m Japanese (N2/N1 study) → 45m system design practice → 30m interview mock" },
+                    maximum: { total: "3hr", breakdown: "1hr Japanese (business keigo) → 1hr system design + portfolio polish → 1hr interview prep + COE paperwork" }
+                },
+                doList: [
+                    "Assemble the complete package: Bachelor's degree (PRIMARY path) OR FE Certificate (optional Plan B) + 3yr portfolio + JLPT N3/N2 ← you only need ONE of degree or FE",
+                    "Build an undeniable GitHub portfolio: 6+ projects, all documented, all production-deployed",
+                    "Polish GitHub READMEs: architecture, CI/CD pipelines, pain points resolved, bottlenecks fixed",
+                    "Apply via TokyoDev (tokyodev.com) and Japan Dev (japan-dev.com) — built for English-speaking engineers",
+                    "Target specifically: Mercari, PayPay, Rakuten, HENNGE, Zeals, SmartNews — global-minded companies",
+                    "Only apply to companies that explicitly state 'Visa Sponsorship Available'",
+                    "Frame your narrative: 'established engineer choosing Japan for professional growth' — not 'escaping Bangladesh'",
+                    "Prepare for 3–4 round interviews: technical, system design, cultural fit",
+                    "Study Japanese work culture: nemawashi, ringi, team communication norms",
+                    "Budget ¥200K–¥500K for relocation costs (flight, deposit, furnishing) — most companies don't cover this for entry-level",
+                ],
+                dontList: [
+                    "Do NOT move to Japan on a Tourist Visa to job hunt — immigration scrutinizes this heavily",
+                    "Do NOT move on a Student Visa hoping to land a tech role — this leads to Izakaya work, not engineering",
+                    "Do NOT apply to legacy Japanese firms demanding N1 Japanese without sponsorship transparency",
+                    "Do NOT present your Upwork income as 'freelance gigs' — frame it as 'international product development'",
+                    "Do NOT apply without at minimum JLPT N3 — N2 is strongly preferred for any role beyond pure coding",
+                    "Do NOT expect ¥7M+ as a first job — that's the 75th+ percentile. Plan for ¥4.5M–¥5.5M.",
+                    "Do NOT burn bridges in Bangladesh — keep remote income flowing during the transition. You need 3-6 months of financial runway in Tokyo.",
+                ],
+                tips: [
+                    "Mercari: Known for hiring non-Japanese engineers. They sponsor visa, may cover flight + temp housing. But they're selective — strong system design skills required.",
+                    "PayPay: 70M+ users, Japanese lessons on company time, specifically hires foreign SREs. Realistic target for DevOps engineers.",
+                    "The narrative frame: 'I am an established remote infrastructure engineer managing international deployments choosing to join your team' — not 'I want to come to Japan'",
+                    "TokyoDev and Japan Dev are purpose-built for this exact situation — use them as primary job platforms",
+                    "Certificate of Eligibility (COE) processing takes 1–3 months — plan timeline accordingly. Start applying 6 months before desired start date.",
+                    "The Izakaya trap is real: developer with 10yr PHP experience moved to Japan on student visa, tech stack outdated, no portfolio, stuck in restaurant work. Physical presence ≠ job offer. Apply FROM Bangladesh first.",
+                    "JLPT N2 = significant advantage. N3 = competitive for international companies. N4 = minimum for any Japanese-speaking role. N5 = not sufficient alone.",
+                    "Budget reality: First month in Tokyo costs ¥300K–¥500K (deposit, key money, furnishing). Save at least ৳500K–৳800K before moving. Don't rely on company relocation packages for entry-level.",
+                ],
+                tracker: [
+                    { task: "Bachelor's degree completed ✓  (PRIMARY)  OR  ITPEC FE Certificate (Plan B) — only ONE needed", type: "milestone" },
+                    { task: "GitHub: 6+ projects with full architecture documentation", type: "portfolio" },
+                    { task: "TokyoDev + Japan Dev profiles active", type: "milestone" },
+                    { task: "10+ Japan applications submitted", type: "milestone" },
+                    { task: "JLPT N2 (ideal) or N3 (minimum) certificate", type: "language" },
+                    { task: "Job offer received from Japan company ✓", type: "milestone" },
+                    { task: "Certificate of Eligibility (COE) processing started", type: "milestone" },
+                    { task: "Flight from Dhaka to Tokyo booked ✓", type: "milestone" },
+                ],
+                resources: [
+                    { name: "TokyoDev", url: "https://tokyodev.com", note: "Primary Japan job platform" },
+                    { name: "Japan Dev", url: "https://japan-dev.com", note: "Japan tech job listings" },
+                    { name: "Mercari Careers", url: "https://careers.mercari.com/en/work-in-japan", note: "Visa + relocation package" },
+                    { name: "PayPay SRE Role", url: "https://tokyodev.com/companies/paypay", note: "Foreign SRE hiring" },
+                    { name: "HENNGE", url: "https://hennge.com/global/recruit", note: "English-first, visa sponsor" },
+                ],
+                calendarEstimate: { range: "~2030 → ~2031", confidence: "widest", note: "Widest uncertainty band in the plan. Could land earlier or later — the degree, portfolio, and N2/N3 being genuinely ready matters more than hitting a year." },
+                aiWorkflow: [
+                    { category: "Interview Prep", detail: "Use AI to run mock system-design interviews — describe a system, have it play interviewer and push back on your design choices the way a real interviewer would." },
+                    { category: "Japanese Polish", detail: "Draft your 履歴書 (resume) and 自己PR (self-PR) in Japanese with AI help, then have a native speaker or tutor review the final version. AI Japanese still makes tone mistakes native readers catch instantly." },
+                    { category: "Tailoring", detail: "Ask AI to help tailor your GitHub README and application narrative to each company's stated values (Mercari, PayPay, and HENNGE each emphasize different things). Generic applications read as generic." },
+                    { category: "Roleplay Practice", detail: "Practice Japanese workplace phrases and self-introductions with AI in roleplay mode — low-stakes repetition before the stakes are real." },
+                    { category: "Guardrail", detail: "Never let AI write your actual interview answers to memorize word-for-word — interviewers can tell, and system-design interviews specifically test how you think, not what you've memorized." },
+                ],
+                kpis: [
+                    { label: "Japan job applications submitted", target: 10, unit: "" },
+                    { label: "Interview rounds completed", target: 5, unit: "" },
+                    { label: "GitHub projects with full architecture documentation", target: 6, unit: "" },
+                    { label: "Relocation savings fund", target: 500000, unit: "৳" },
+                ],
+                scenario: {
+                    best: "Offer at ¥5.5M–¥6.5M from an international-minded company (Mercari, PayPay, Rakuten, HENNGE). Visa sponsored. Flight + temp housing covered. Dhaka → Tokyo executed. ¥8M–¥12M comes after 3-5 years of growth in Japan.",
+                    expected: "Offer at ¥4.5M–¥5.5M from a mid-sized Japanese tech company. Visa sponsored. You cover relocation costs. Tight budget first year (take-home ~¥330K/mo after tax). ¥6M–¥8M after 2-3 years via job hop or promotion.",
+                    worst: "No Japan offer after 6+ months of applying. FE exam failed 2+ times (or not attempted). BUT: 3+ years of remote work at ৳30K–৳60K/mo (median) continues. Skills are globally marketable — Singapore, UAE, EU digital nomad visas, or remote employment with US/EU companies. Japan path can still be unlocked via degree completion (primary path).",
+                    key: "The realistic first-job range is ¥4.5M–¥5.5M (median ¥5.75M in Tokyo per Levels.fyi 2026). ¥7M+ is possible but represents the 75th+ percentile. Plan your Tokyo survival budget around ¥4.5M. Anything above that is a bonus. The bachelor's degree is your PRIMARY Japan visa path — more reliable, more recognized. FE is optional Plan B only."
+                }
+            }
+        ];
+
+        // REALITY-CHECKED income data (BDT/month equivalent)
+        // Source: Inside Bangladesh 2025, RisingStar Academy BD, Glassdoor BD, Levels.fyi Tokyo
+        // These are TOP 20% freelancer earner targets — NOT median. See Income Probability Box.
+        const INCOME_TRAJECTORY = [
+            { phase: "Phase 0", period: "Now–Aug 2026", income: 0, label: "৳0", realistic: "৳0", probability: "—" },
+            { phase: "Phase 1", period: "Month 1–3", income: 0, label: "৳0", realistic: "৳0", probability: "80% earn ৳0" },
+            { phase: "Phase 2", period: "Month 4–7", income: 8000, label: "৳0–10K", realistic: "৳3–8K", probability: "Top 25% target" },
+            { phase: "Phase 3", period: "Month 8–11", income: 20000, label: "৳5–20K", realistic: "৳8–15K", probability: "Top 20% target" },
+            { phase: "Phase 4", period: "Month 12–18", income: 35000, label: "৳10–40K", realistic: "৳10–25K", probability: "Top 15% target" },
+            { phase: "Phase 5", period: "Month 19–24", income: 50000, label: "৳15–60K", realistic: "৳15–35K", probability: "Top 15% target" },
+            { phase: "Phase 6", period: "Month 25–30", income: 65000, label: "৳20–70K", realistic: "৳20–45K", probability: "Top 10% target" },
+            { phase: "Phase 7", period: "Month 31–42", income: 100000, label: "৳40–120K", realistic: "৳30–60K", probability: "Top 10% target" },
+            { phase: "Japan", period: "Year 4–6", income: 400000, label: "¥4.5M–6.5M", realistic: "¥4.5M–5.5M", probability: "Entry-level Tokyo" },
+        ];
+
+        // ═══════════════════════════════════════════════════════════
+        // UNIVERSITY ADMISSION SPRINT — global checklist
+        // Most relevant Phase 0 → Phase 1, but accessible from anywhere
+        // ═══════════════════════════════════════════════════════════
+        const ADMISSION_CHECKLIST = [
+            {
+                group: "1. Research & Shortlist",
+                items: [
+                    "Research 5+ bachelor's programs — National University-affiliated colleges, private universities, or accredited online/distance options",
+                    "Compare total program cost and tuition payment structure for each, not just the headline per-semester fee",
+                    "Check which programs genuinely allow evening/weekend classes or flexible attendance — verify with current students, not just the brochure",
+                    "Confirm the program qualifies for the Japan Engineer visa pathway — a standard bachelor's in any field qualifies, it does not need to be CS-specific",
+                ]
+            },
+            {
+                group: "2. Documents",
+                items: [
+                    "Passport-size photographs — check each university's exact spec, sizes vary",
+                    "HSC certificate + mark sheet (available ~Oct–Nov 2026 after results)",
+                    "SSC certificate + mark sheet",
+                    "National ID or Birth Certificate",
+                    "Character certificate, if the program requires one",
+                ]
+            },
+            {
+                group: "3. Apply",
+                items: [
+                    "Apply to 2–3 programs, not just one — admission and financial-aid outcomes vary more than expected",
+                    "Pay application fee(s) and keep every payment receipt",
+                    "Track each application's status until you hear back",
+                ]
+            },
+            {
+                group: "4. Confirm & Register",
+                items: [
+                    "Get the admission offer in writing before paying any enrollment fee",
+                    "Pay the admission/enrollment fee",
+                    "Register for first-semester courses",
+                    "Get your official student ID and an enrollment confirmation letter — you'll need proof of enrollment later for visa/COE paperwork",
+                ]
+            },
+        ];
+
+        // ═══════════════════════════════════════════════════════════
+        // FINANCIAL ROADMAP — global, priority order for where
+        // freelance/local income should go as it starts arriving
+        // ═══════════════════════════════════════════════════════════
+        const FINANCIAL_ROADMAP = [
+            { priority: 1, stage: "Emergency fund", detail: "2–3 months of your baseline living costs, before spending on anything below. This is what stops one bad client month from becoming a crisis." },
+            { priority: 2, stage: "Tools that remove a real bottleneck", detail: "A better laptop, faster internet, a second monitor — only if the current setup is actually slowing you down, not because an upgrade sounds nice." },
+            { priority: 3, stage: "Certification & exam fees", detail: "AWS SAA ~$150 (~৳18,000) · JLPT ~৳3,800 per sitting (JUAAB, 2026 rate) · ITPEC FE ~৳204 registration — the FE exam was never expensive to attempt, time was always the real cost." },
+            { priority: 4, stage: "Japanese learning resources", detail: "Textbooks, a structured N3/N2 prep course, or a tutor for speaking practice. Reading and grammar you can mostly self-teach — speaking is harder to self-correct." },
+            { priority: 5, stage: "Passport & visa fund", detail: "Bangladesh e-passport renewal/issuance (check current fee tiers at passport.gov.bd) plus a buffer for Japan visa/COE-related costs later." },
+            { priority: 6, stage: "Relocation fund", detail: "Target ৳500,000–৳800,000 saved before the Japan move — covers the ¥300K–500K first-month reality: deposit, key money, furnishing. Build this gradually from Phase 4 onward, not in a rush at Phase 8." },
+            { priority: 7, stage: "Investment / long-term savings", detail: "Only once 1–6 are funded. Even a low-effort index fund or fixed deposit beats letting money sit idle once the safety net actually exists." },
+        ];
+
+        // ═══════════════════════════════════════════════════════════
+        // HEALTH SYSTEM — recurring weekly checklist
+        // ═══════════════════════════════════════════════════════════
+        const HEALTH_CHECKLIST = [
+            { label: "Sleep 7–8 hours", freq: "Daily" },
+            { label: "Workout / exercise session", freq: "4×/week" },
+            { label: "Walk (even 15–20 min)", freq: "Daily" },
+            { label: "Non-technical reading", freq: "20 min/day" },
+            { label: "One screen-free block (meals, before bed)", freq: "Daily" },
+            { label: "Back up code + notes", freq: "Weekly" },
+            { label: "Review spending against the Financial Roadmap", freq: "Weekly" },
+        ];
+
+        // ═══════════════════════════════════════════════════════════
+        // DECISION CHECKPOINTS — 6-month reflection journal prompts
+        // ═══════════════════════════════════════════════════════════
+        const CHECKPOINT_QUESTIONS = [
+            "Am I still enjoying backend/DevOps work, or forcing it?",
+            "Is freelancing actually progressing, or stuck at roughly the same income as the last checkpoint?",
+            "Do I need a local job right now for stability, even temporarily?",
+            "Is my Japanese on track for the JLPT level this phase needs?",
+            "Is the Japan plan still the best fit for what I actually want — or has that changed?",
+            "What's the one thing I'd change about the last 6 months if I could redo it?",
+        ];
+
+        // App state
+        let activePhase = 0;
+        let activeTab = "overview";
+        let checkedItems = {};
+
+        function render() {
+            const phase = PHASES[activePhase];
+            const app = document.getElementById("app");
+
+            app.innerHTML = `
+                <div class="header">
+                    <div class="header-content">
+                        <div class="header-top">
+                            <div class="header-title-section">
+                                <div class="label">The Unbreakable Master Plan</div>
+                                <h1>Dhaka → Global Engineer → Tokyo</h1>
+                            </div>
+                            <div class="header-badges">
+                                <div class="badge">
+                                    <span>First Japan Job</span>
+                                    <span>¥4.5M–¥6.5M JPY</span>
+                                </div>
+                                <div class="badge">
+                                    <span>Senior (5–8yr in JP)</span>
+                                    <span>¥8M–¥12M+ JPY</span>
+                                </div>
+                                <div class="badge">
+                                    <span>Timeline</span>
+                                    <span>4–6 Years (realistic)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="phase-selector">
+                            ${PHASES.map((p, i) => `
+                                <button class="phase-btn ${activePhase === i ? "active" : ""}" 
+                                    style="${activePhase === i ? `background: ${p.color}; color: #fff; border-bottom-color: ${p.color};` : ""}"
+                                    onclick="switchPhase(${i})">
+                                    ${p.icon} ${p.label}
+                                </button>
+                            `).join("")}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content">
+                    <div class="phase-hero" style="background: linear-gradient(135deg, rgba(${hexToRgb(phase.color)}, 0.13) 0%, #12121e 100%); border-color: rgba(${hexToRgb(phase.color)}, 0.27);">
+                        <div class="hero-top">
+                            <div class="hero-title-section">
+                                <div class="hero-icon">${phase.icon}</div>
+                                <h2 class="hero-title">${phase.title}</h2>
+                                <div class="hero-subtitle" style="color: ${phase.color};">${phase.subtitle}</div>
+                                <div class="hero-period">${phase.period}</div>
+                            </div>
+                            <div class="hero-mission" style="background: rgba(10, 10, 15, 0.53);">
+                                <div class="mission-label">Mission</div>
+                                <div class="mission-text">${phase.mission}</div>
+                            </div>
+                        </div>
+
+                        <div class="systems-status">
+                            ${Object.entries(phase.systemsStatus).map(([sys, status]) => `
+                                <div class="system-chip" style="border-color: rgba(${hexToRgb(phase.color)}, 0.2);">
+                                    <span class="system-chip-label" style="color: ${phase.color};">${sys}</span>
+                                    <div class="system-chip-value">${status}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                    </div>
+
+                    <div class="tab-navigation">
+                        ${[
+                            { id: "overview", label: "📋 Do's & Don'ts" },
+                            { id: "dailyos", label: "📅 Daily OS" },
+                            { id: "weekly", label: "📊 Weekly" },
+                            { id: "tracker", label: "✅ Tracker" },
+                            { id: "aiworkflow", label: "🤖 AI Workflow" },
+                            { id: "career", label: "🇯🇵 Career Bridge" },
+                            { id: "admission", label: "🎓 Admission" },
+                            { id: "failure", label: "⚠️ Failure Modes" },
+                            { id: "tips", label: "💡 Tips" },
+                            { id: "resources", label: "📚 Resources" },
+                            { id: "scenarios", label: "🎯 Scenarios" },
+                            { id: "timeline", label: "🗓️ Timeline" },
+                            { id: "wellbeing", label: "❤️ Health & Checkpoints" },
+                        ].map(tab => `
+                            <button class="tab-btn ${activeTab === tab.id ? "active" : ""}" 
+                                style="${activeTab === tab.id ? `color: ${phase.color}; border-bottom-color: ${phase.color};` : ""}"
+                                onclick="switchTab('${tab.id}')">
+                                ${tab.label}
+                            </button>
+                        `).join("")}
+                    </div>
+
+                    ${renderTabContent(phase)}
+
+                    ${renderIncomeChart()}
+
+                    ${renderWarningBoxes()}
+
+                    <div class="footer">
+                        Reality-checked June 2026. Sources: ITPEC.org exam statistics (BD pass rate 9.2%–25.4%), Levels.fyi Tokyo (entry-level ¥4.1M–¥6.5M, updated June 2026), JapanDev 2026 salary guide, TechJPCareers 2025, Inside Bangladesh freelance income survey 2025, RisingStar Academy BD freelancer data, Glassdoor BD salary data 2025, TokyoDev visa guides. All income numbers represent TOP 10-25% freelancer earners — NOT median. See Income Probability Box for honest breakdown.
+                    </div>
+                </div>
+            `;
+
+            attachEventListeners();
+        }
+
+        function renderTabContent(phase) {
+            if (activeTab === "dailyos") return renderDailyOS(phase);
+            if (activeTab === "weekly") return renderWeeklyDashboard(phase);
+            if (activeTab === "career") return renderCareerBridge(phase);
+            if (activeTab === "failure") return renderFailureModes(phase);
+            if (activeTab === "aiworkflow") return renderAIWorkflow(phase);
+            if (activeTab === "admission") return renderAdmissionSprint(phase);
+            if (activeTab === "timeline") return renderTimeline(phase);
+            if (activeTab === "wellbeing") return renderWellbeing(phase);
+            if (activeTab === "overview") {
+                return `
+                    <div class="overview-grid">
+                        <div class="do-list">
+                            <div class="list-header">✅ Do This</div>
+                            ${phase.doList.map(item => `
+                                <div class="list-item">
+                                    <div class="list-dot"></div>
+                                    <div class="list-text">${item}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <div class="dont-list">
+                            <div class="list-header">🚫 Don't Do This</div>
+                            ${phase.dontList.map(item => `
+                                <div class="list-item">
+                                    <div class="list-dot"></div>
+                                    <div class="list-text">${item}</div>
+                                </div>
+                            `).join("")}
+                        </div>
+                    </div>
+                `;
+            } else if (activeTab === "tracker") {
+                const checkedCount = phase.tracker.filter((_, i) => checkedItems[`${phase.id}-${i}`]).length;
+                const progressPercent = (checkedCount / phase.tracker.length) * 100;
+                const tagColors = { milestone: "#6C63FF", skill: "#00C896", income: "#FF9F43", language: "#4ECDC4", portfolio: "#A855F7" };
+                
+                return `
+                    ${renderKPIDashboard(phase)}
+                    <div class="tracker-container" style="border-color: rgba(${hexToRgb(phase.color)}, 0.2);">
+                        <div class="tracker-header">
+                            <div class="tracker-title" style="color: ${phase.color};">Phase Tracker</div>
+                            <div class="tracker-count">${checkedCount} / ${phase.tracker.length} complete</div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="background: ${phase.color}; width: ${progressPercent}%;"></div>
+                        </div>
+                        ${phase.tracker.map((item, i) => {
+                            const key = `${phase.id}-${i}`;
+                            const checked = checkedItems[key];
+                            return `
+                                <div class="tracker-item ${checked ? "checked" : ""}" 
+                                    style="${checked ? `border-color: ${phase.color}; background: rgba(${hexToRgb(phase.color)}, 0.07);` : ""}"
+                                    onclick="toggleCheck(${phase.id}, ${i})">
+                                    <div class="checkbox" style="${checked ? `border-color: ${phase.color}; background: ${phase.color};` : ""}">
+                                        ${checked ? "✓" : ""}
+                                    </div>
+                                    <div class="tracker-task">${item.task}</div>
+                                    <div class="tracker-tag" style="background: rgba(${hexToRgb(tagColors[item.type])}, 0.2); color: ${tagColors[item.type]};">${item.type}</div>
+                                </div>
+                            `;
+                        }).join("")}
+                    </div>
+                `;
+            } else if (activeTab === "tips") {
+                return `
+                    <div class="tips-container" style="border-color: rgba(${hexToRgb(phase.color)}, 0.2);">
+                        <div class="section-title" style="color: ${phase.color};">💡 Insider Tips & Warnings</div>
+                        ${phase.tips.map(tip => `
+                            <div class="tip-item" style="border-color: rgba(${hexToRgb(phase.color)}, 0.13);">
+                                <div class="tip-icon">💡</div>
+                                <div class="tip-text">${tip}</div>
+                            </div>
+                        `).join("")}
+                    </div>
+                `;
+            } else if (activeTab === "resources") {
+                return `
+                    <div class="resources-container" style="border-color: rgba(${hexToRgb(phase.color)}, 0.2);">
+                        <div class="section-title" style="color: ${phase.color};">📚 Exact Resources — In Order</div>
+                        ${phase.resources.map((r, i) => `
+                            <div class="resource-item">
+                                <div class="resource-number" style="background: ${phase.color};">${i + 1}</div>
+                                <div class="resource-info">
+                                    <div class="resource-name">${r.name}</div>
+                                    <div class="resource-note">${r.note}</div>
+                                </div>
+                                <div class="resource-url" style="color: ${phase.color};">${r.url.replace("https://", "")}</div>
+                            </div>
+                        `).join("")}
+                    </div>
+                `;
+            } else if (activeTab === "scenarios") {
+                const hasExpected = !!phase.scenario.expected;
+                return `
+                    <div class="scenarios-grid" style="grid-template-columns: repeat(${hasExpected ? 3 : 2}, 1fr);">
+                        <div class="scenario-card best">
+                            <div class="scenario-header" style="color: #00C896;">🏆 Best Case (Top 10%)</div>
+                            <div class="scenario-text">${phase.scenario.best}</div>
+                        </div>
+                        ${hasExpected ? `
+                        <div class="scenario-card" style="border-color: rgba(108, 99, 255, 0.2);">
+                            <div class="scenario-header" style="color: #6C63FF;">🟡 Expected (50%)</div>
+                            <div class="scenario-text">${phase.scenario.expected}</div>
+                        </div>` : ''}
+                        <div class="scenario-card worst">
+                            <div class="scenario-header" style="color: #FF9F43;">⚠️ Worst Case</div>
+                            <div class="scenario-text">${phase.scenario.worst}</div>
+                        </div>
+                        <div class="scenario-card key" style="border-color: rgba(${hexToRgb(phase.color)}, 0.27); ${hasExpected ? 'grid-column: 1 / -1;' : ''}">
+                            <div class="scenario-header" style="color: ${phase.color};">🔑 The Key Insight</div>
+                            <div class="scenario-text">${phase.scenario.key}</div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function renderIncomeChart() {
+            // Use logarithmic scale so early-phase bars are actually visible
+            // Without log scale, Phase 0-3 bars are invisible next to Japan income
+            const logScale = (val) => {
+                if (val <= 0) return 0;
+                return Math.log10(val + 1) / Math.log10(400001) * 100;
+            };
+            return `
+                <div class="income-chart">
+                    <div class="chart-title">Income Trajectory — Logarithmic Scale (so early phases are visible)</div>
+                    <div class="chart-description">🔴 Red labels = realistic median for most people. These are NOT guaranteed — see Income Probability Box below. Top 10-25% earners hit the higher numbers. Source: Inside Bangladesh 2025, Glassdoor BD, Levels.fyi Tokyo 2026.</div>
+                    <div class="chart-bars">
+                        ${INCOME_TRAJECTORY.map((item, i) => {
+                            const height = Math.max(logScale(item.income), 3);
+                            const isActive = activePhase === i || (activePhase === 8 && i === 8);
+                            const phaseColor = PHASES[Math.min(i, PHASES.length - 1)]?.color || "#6C63FF";
+                            return `
+                                <div class="bar-container">
+                                    <div class="bar-label" style="color: ${item.realistic ? '#FF6B6B' : '#555'}">${item.realistic || item.label}</div>
+                                    <div class="bar-wrapper">
+                                        <div class="bar" style="background: ${isActive ? phaseColor : phaseColor + "55"}; height: ${height}%; opacity: ${isActive ? 1 : 0.7};"></div>
+                                    </div>
+                                    <div class="bar-phase">${item.phase}</div>
+                                    <div class="bar-prob" style="color: #666; font-size: 7px; text-align: center; margin-top: 2px;">${item.probability}</div>
+                                </div>
+                            `;
+                        }).join("")}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderWarningBoxes() {
+            return `
+                <div class="warning-box">
+                    <div class="warning-title">⚠️ Japan Visa Paths — Degree (Primary) vs. ITPEC FE (Optional Plan B)</div>
+                    <div class="warning-text">
+                        <strong>You only need ONE of these to unlock a Japan Engineer visa:</strong> (1) <strong>Bachelor's degree in any field — this is the PRIMARY path. Simplest, most recognized, most reliable.</strong> (2) ITPEC FE/AP exam pass — optional Plan B / accelerator. Confirmed by TokyoDev &amp; JapanDev. (3) 10+ years verifiable experience.
+                    </div>
+                    <div class="warning-text" style="margin-top: 8px;">
+                        <strong>ITPEC FE Reality (Plan B only):</strong> Bangladesh pass rate: <strong>9.2%–25.4%</strong> (2023–2025 data, avg ~15-19%). The IP exam does NOT qualify — only FE and AP do. Source: ITPEC.org exam statistics. Even with the FE cert, you still need a company to sponsor your visa. The cert proves skill — it doesn't guarantee a job.
+                    </div>
+                    <div class="warning-text" style="margin-top: 8px;">
+                        <strong>Honest recommendation:</strong> The bachelor's degree is your PRIMARY Japan visa path — pursue it first. The FE exam is an optional Plan B / accelerator. Failing the FE does NOT block Japan if your degree is on track. Do not sacrifice degree progress for FE prep. Source: TokyoDev "No Degree? Take the IT Exam", JapanDev visa guide.
+                    </div>
+                    <div class="warning-details">
+                        <div class="detail-chip">📋 FE Morning: 80 MCQ, 150min (discrete math, networks, business strategy)</div>
+                        <div class="detail-chip">💻 FE Afternoon: Practical scenarios, 150min (algorithms, SQL, pseudo-code)</div>
+                        <div class="detail-chip">🇧🇩 BD pass rate: ~15-19% average. Exams: April & October via BDITEC</div>
+                    </div>
+                </div>
+
+                <div class="income-reality-box">
+                    <div class="reality-title">📊 Income Probability Box — Based on Bangladesh Freelance Data 2025</div>
+                    <div class="reality-description">Source: Inside Bangladesh 2025, RisingStar Academy BD, Glassdoor BD. Most Bangladeshi freelancers earn $200–$1,000/mo (৳24K–৳120K). The numbers in this plan's phases represent TOP 10-25% earner targets — not averages.</div>
+                    <div class="reality-grid">
+                        <div class="reality-card">
+                            <div class="reality-label" style="color: #00C896;">🟢 Top 10% Freelancer</div>
+                            <div class="reality-desc">৳80K–৳120K+/mo by Year 2-3. Requires specialization (DevOps/AI), strong English, consistent Upwork presence, 50+ proposals before first client. ~10% of BD freelancers reach this.</div>
+                        </div>
+                        <div class="reality-card">
+                            <div class="reality-label" style="color: #FF9F43;">🟡 Median Freelancer (50%)</div>
+                            <div class="reality-desc">৳20K–৳60K/mo after 1-2 years. This is what MOST skilled freelancers actually earn. Plan your survival budget around ৳25K–৳35K/mo from freelance.</div>
+                        </div>
+                        <div class="reality-card">
+                            <div class="reality-label" style="color: #FF6B6B;">🔴 Struggling (30%)</div>
+                            <div class="reality-desc">৳0–৳20K/mo. Inconsistent clients. Long dry spells (2-4 months). This is the reality for ~30% of freelancers even with real skills. Have a backup plan.</div>
+                        </div>
+                    </div>
+                    <div class="reality-rule">
+                        <div class="reality-rule-text">
+                            <strong>Honest planning rule:</strong> The income numbers shown in each phase are TOP 20% targets. Your actual median income will likely be 40-60% of those numbers. If you need ৳50K/mo to survive, plan as if you'll earn ৳25K from freelance + ৳25K from a local junior job (৳25K–৳45K/mo for junior devs in BD, per Glassdoor 2025).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="freelancing-box">
+                    <div class="freelancing-title">⚠️ Freelancing vs Local Job — The Dual-Track Reality</div>
+                    <div class="freelancing-grid">
+                        <div class="freelancing-card bonus">
+                            <div class="freelancing-label" style="color: #00C896;">✅ Track A: Freelancing (Unpredictable)</div>
+                            <div class="reality-desc">Median BD freelancer: ৳20K–৳60K/mo after 1-2 yrs. Top 10%: ৳80K–৳120K+. First client typically takes 30-80 proposals. Dry spells of 2-4 months are normal. Builds portfolio + international income proof for Japan visa.</div>
+                        </div>
+                        <div class="freelancing-card reliable">
+                            <div class="freelancing-label" style="color: #6C63FF;">✅ Track B: Local Junior Job (Stable)</div>
+                            <div class="reality-desc">Junior dev in Dhaka: ৳25K–৳45K/mo (Glassdoor 2025). Mid-level (2-5 yrs): ৳45K–৳80K. Provides stable income WHILE freelancing on the side. Japanese companies value 2-3 years of verifiable work experience — a local job counts.</div>
+                        </div>
+                    </div>
+                    <div class="reality-rule">
+                        <div class="reality-rule-text">
+                            <strong>The honest dual-track:</strong> Don't bet everything on freelancing. Get a local junior job for stability (৳25K–৳45K/mo) and freelance on the side for portfolio + extra income. Combined: ৳40K–৳80K/mo is realistic by Year 2. This also gives you the "2-3 years experience" Japanese companies want. Source: Glassdoor BD 2025, BD Tech Jobs 2025.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="japan-salary-box">
+                    <div class="japan-title">🇯🇵 Japan Salary Reality — Verified 2025/2026 Data</div>
+                    <div class="japan-text">
+                        Source: Levels.fyi Tokyo (updated June 2026), JapanDev 2026, TechJPCareers 2025. Entry-level software engineer in Tokyo: <strong>¥4.1M–¥6.5M</strong> (25th–79th percentile, median ¥5.75M). These are total compensation (base + bonus + stock).
+                    </div>
+                    <div class="japan-grid">
+                        <div class="japan-card first">
+                            <div class="freelancing-label" style="color: #00C896;">Entry-Level (0–2 yrs exp)</div>
+                            <div class="reality-desc"><strong>¥4.1M–¥6.5M JPY.</strong> Degree OR FE Cert + N3/N2 + portfolio. 25th percentile: ¥4.1M. Median: ¥5.75M. Most realistic first-job target: ¥4.5M–¥5.5M.</div>
+                        </div>
+                        <div class="japan-card key">
+                            <div class="freelancing-label" style="color: #6C63FF;">Mid-Level (3–5 yrs in JP)</div>
+                            <div class="reality-desc"><strong>¥7M–¥12M JPY.</strong> After 2-3 years at a Japanese company, internal promotion or job-hop. System design skills + business-level Japanese (N2+) required.</div>
+                        </div>
+                        <div class="japan-card longterm">
+                            <div class="freelancing-label" style="color: #FF9F43;">Senior SRE / Cloud Architect (5–8 yrs)</div>
+                            <div class="reality-desc"><strong>¥8M–¥15M+ JPY.</strong> ¥10M+ requires deep specialization, staff-level impact, or FAANG Japan (Google, Amazon Tokyo pay premium). Not guaranteed — top 20% of engineers.</div>
+                        </div>
+                    </div>
+                    <div class="reality-rule" style="margin-top: 12px;">
+                        <div class="reality-rule-text">
+                            <strong>Cost of living reality:</strong> Tokyo rent: ¥60K–¥120K/mo. Food: ¥40K–¥70K/mo. After tax at ¥5M/yr, take-home ≈ ¥330K/mo. Survivable but tight. At ¥8M/yr, take-home ≈ ¥520K/mo — comfortable. Plan for the ¥4.5M–¥5.5M first-job range, not ¥7M+.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="freelancing-box">
+                    <div class="freelancing-title">💰 Financial Roadmap — Where Your First Income Should Go</div>
+                    <div class="reality-description" style="margin-bottom: 14px;">Income targets exist elsewhere in this plan. This is what to actually do with the money once it arrives — in order, waterfall-style. Don't fund priority 3 while priority 1 is still empty.</div>
+                    <div class="financial-roadmap-list">
+                        ${FINANCIAL_ROADMAP.map(f => `
+                            <div class="financial-roadmap-item">
+                                <div class="financial-priority-num">${f.priority}</div>
+                                <div>
+                                    <div class="financial-stage">${f.stage}</div>
+                                    <div class="financial-detail">${f.detail}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // DAILY OS MODULE
+        // ═══════════════════════════════════════════════════════════
+
+        function renderDailyOS(phase) {
+            const os = phase.dailyOS;
+            if (!os) {
+                return `<div class="tips-container">
+                    <div class="section-title" style="color: ${phase.color}; font-weight: 800; font-size: 13px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">📅 Daily Operating System</div>
+                    <div class="tip-text">Daily OS not yet defined for this phase. Focus on the core skills listed in Do's & Don'ts.</div>
+                </div>`;
+            }
+
+            const timeBudgets = [
+                { key: 'minimum', label: '🔴 Minimum Day (exam week / low energy)', color: '#FF6B6B', data: os.minimum },
+                { key: 'normal', label: '🟡 Normal Day (regular study)', color: '#FF9F43', data: os.normal },
+                { key: 'maximum', label: '🟢 Deep Day (weekend / free day)', color: '#00C896', data: os.maximum },
+            ];
+
+            return `
+                <div class="tracker-container" style="border-color: rgba(${hexToRgb(phase.color)}, 0.2);">
+                    <div class="tracker-header">
+                        <div class="tracker-title" style="color: ${phase.color};">📅 Daily Operating System — ${phase.label}</div>
+                    </div>
+                    <div style="margin-bottom: 12px; padding: 10px 14px; background: rgba(255,159,67,0.08); border-radius: 8px; border: 1px solid rgba(255,159,67,0.15);">
+                        <div style="font-size: 11px; color: #FF9F43; line-height: 1.6;">
+                            <strong>Flexible scheduling:</strong> Your daily time varies wildly (HSC, university, freelance). Design for the <em>minimum</em> day, not the maximum. 45 minutes of consistency beats 3 hours of sporadic marathons.
+                        </div>
+                    </div>
+                    ${timeBudgets.map(tb => `
+                        <div class="dos-time-block" style="border-color: rgba(${hexToRgb(tb.color)}, 0.2);">
+                            <div class="dos-time-header">
+                                <div class="dos-time-label" style="color: ${tb.color};">${tb.label}</div>
+                                <div class="dos-time-total">${tb.data.total}</div>
+                            </div>
+                            <div class="dos-breakdown">${tb.data.breakdown}</div>
+                        </div>
+                    `).join('')}
+                    <div style="margin-top: 8px; padding: 10px 14px; background: rgba(108,99,255,0.08); border-radius: 8px; border: 1px solid rgba(108,99,255,0.15);">
+                        <div style="font-size: 10px; color: #888; line-height: 1.6;">
+                            <strong style="color: #6C63FF;">Japanese note:</strong> Japanese study runs in parallel to every phase. Even on minimum days, do at least 10-15 minutes of Anki/vocab. Consistency in language acquisition is non-negotiable — it compounds over years.
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // WEEKLY DASHBOARD MODULE
+        // ═══════════════════════════════════════════════════════════
+
+        function getWeeklyTargets(phase) {
+            const base = [
+                { label: 'Technical study / project work', freq: 'Daily', done: false },
+                { label: 'Japanese study (Anki + grammar)', freq: 'Daily', done: false },
+            ];
+            if (phase.id >= 1) base.push({ label: 'Build / deploy a project', freq: '3x/week', done: false });
+            if (phase.id >= 2) base.push({ label: 'Docker / AWS practice', freq: '3x/week', done: false });
+            if (phase.id >= 3) base.push({ label: 'Security / CI-CD study', freq: '2x/week', done: false });
+            if (phase.id >= 4) base.push({ label: 'AWS SAA prep / labs', freq: '3x/week', done: false });
+            if (phase.id >= 5) base.push({ label: 'Monitoring / pipeline build', freq: '2x/week', done: false });
+            if (phase.id >= 6) base.push({ label: 'Kubernetes practice', freq: '3x/week', done: false });
+            if (phase.id >= 7) base.push({ label: 'AI integration project', freq: '2x/week', done: false });
+            if (phase.id >= 8) base.push({ label: 'Interview prep + applications', freq: 'Daily', done: false });
+            return base;
+        }
+
+        function getWeeklyData(phase) {
+            const storageKey = 'devops_weekly_' + phase.id;
+            const stored = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            let streak = 0;
+            for (let i = 0; i < 7; i++) {
+                const d = new Date();
+                d.setDate(d.getDate() - i);
+                if (stored[d.toDateString()]) streak++;
+                else break;
+            }
+            const today = new Date().toDateString();
+            const weekTotal = Object.values(stored).reduce((a, b) => a + (b.mins || 0), 0);
+            const consistency = Math.min(100, Math.round((streak / 7) * 100));
+            return {
+                consistency,
+                streak,
+                targets: getWeeklyTargets(phase),
+                sessionLog: stored[today] ? `Today: ${stored[today].mins} min logged` : 'No session logged today',
+                weekTotal
+            };
+        }
+
+        function renderWeeklyDashboard(phase) {
+            const weekData = getWeeklyData(phase);
+            const phaseColor = phase.color;
+
+            return `
+                <div class="tracker-container" style="border-color: rgba(${hexToRgb(phaseColor)}, 0.2);">
+                    <div class="tracker-header">
+                        <div class="tracker-title" style="color: ${phaseColor};">📊 Weekly Dashboard — ${phase.label}</div>
+                    </div>
+                    <div style="margin-bottom: 16px; padding: 14px; background: #0a0a0f; border-radius: 8px; border: 1px solid #1e1e2e;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <div style="font-weight: 700; font-size: 12px; color: #fff;">🔥 Consistency Score</div>
+                            <div style="font-size: 18px; font-weight: 800; color: ${weekData.consistency >= 71 ? '#00C896' : weekData.consistency >= 43 ? '#FF9F43' : '#FF6B6B'};">${weekData.consistency}%</div>
+                        </div>
+                        <div class="progress-bar" style="height: 8px; margin-bottom: 8px;">
+                            <div class="progress-fill" style="background: ${weekData.consistency >= 71 ? '#00C896' : weekData.consistency >= 43 ? '#FF9F43' : '#FF6B6B'}; width: ${weekData.consistency}%;"></div>
+                        </div>
+                        <div style="font-size: 10px; color: #666;">7-day study streak: ${weekData.streak} days | Target: 7 days/week</div>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <div style="font-weight: 700; font-size: 12px; color: #fff; margin-bottom: 10px;">📋 Weekly Targets</div>
+                        ${weekData.targets.map(t => `
+                            <div class="weekly-target-item">
+                                <div class="weekly-target-check ${t.done ? 'done' : ''}">${t.done ? '✓' : ''}</div>
+                                <div class="weekly-target-label ${t.done ? 'done' : ''}">${t.label}</div>
+                                <div class="weekly-target-freq">${t.freq}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div style="padding: 14px; background: #0a0a0f; border-radius: 8px; border: 1px solid #1e1e2e;">
+                        <div style="font-weight: 700; font-size: 12px; color: #fff; margin-bottom: 10px;">⏱️ Today's Session</div>
+                        <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+                            <input type="number" id="sessionMinutes" placeholder="Minutes studied" min="0" max="480"
+                                class="session-input">
+                            <button onclick="logSession(${phase.id})" class="session-log-btn" style="background: ${phaseColor};">LOG</button>
+                        </div>
+                        <div id="sessionLog" style="font-size: 10px; color: #666;">${weekData.sessionLog}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function logSession(phaseId) {
+            const input = document.getElementById('sessionMinutes');
+            const mins = parseInt(input?.value || 0);
+            if (mins <= 0) return;
+            const storageKey = 'devops_weekly_' + phaseId;
+            const stored = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            const today = new Date().toDateString();
+            stored[today] = { mins, timestamp: Date.now() };
+            localStorage.setItem(storageKey, JSON.stringify(stored));
+            render();
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // CAREER BRIDGE DATA & RENDERER
+        // Japanese DevOps vocabulary, workplace phrases, resume fields
+        // Sources: daijob.com, cotoacademy.com, it-yougo.net/devops/
+        // ═══════════════════════════════════════════════════════════
+
+        function getCareerBridgeData(phase) {
+            const devopsVocab = [
+                { term: 'サーバー', reading: 'sābā', meaning: 'Server' },
+                { term: 'デプロイ', reading: 'depuroi', meaning: 'Deploy' },
+                { term: 'インフラ', reading: 'infura', meaning: 'Infrastructure' },
+                { term: '運用', reading: "un'yō", meaning: 'Operations / Run & maintain' },
+                { term: '監視', reading: 'kanshi', meaning: 'Monitoring' },
+                { term: '自動化', reading: 'jidōka', meaning: 'Automation' },
+                { term: '冗長化', reading: 'jōryōka', meaning: 'Redundancy' },
+                { term: '復旧', reading: 'fukkyū', meaning: 'Recovery' },
+                { term: '障害', reading: 'shōgai', meaning: 'Failure / Incident' },
+                { term: '負荷', reading: 'fuka', meaning: 'Load' },
+                { term: '拡張', reading: 'kakuchō', meaning: 'Scaling' },
+                { term: '環境', reading: 'kankyō', meaning: 'Environment' },
+                { term: '構築', reading: 'kōchiku', meaning: 'Build / Construct' },
+                { term: '設定', reading: 'settei', meaning: 'Configuration' },
+                { term: '継続的インテグレーション', reading: 'keizokuteki integurēshon', meaning: 'Continuous Integration (CI)' },
+                { term: '継続的デプロイメント', reading: 'keizokuteki depuroimento', meaning: 'Continuous Deployment (CD)' },
+                { term: 'ロールバック', reading: 'rōrubakku', meaning: 'Rollback' },
+                { term: 'アラート', reading: 'arāto', meaning: 'Alert' },
+                { term: 'インシデント管理', reading: 'inshidento kanri', meaning: 'Incident Management' },
+                { term: 'スケーラビリティ', reading: 'sukērabiriti', meaning: 'Scalability' },
+            ];
+            const selfIntro = phase.id < 3
+                ? '<em style="color: #666;">Build toward this. Start practicing at Phase 3-4.</em><br><br>わたしは[名前]です。バングラデシュから来ました。ITエンジニアです。日本語を勉強しています。よろしくお願いします。'
+                : 'わたしは[名前]です。バングラデシュから来ました。<br>ITエンジニアとして[年数]年の経験があります。<br>Docker、Kubernetes、AWSを使ったインフラ構築の経験があります。<br>CI/CDパイプラインの自動化、監視システムの構築を行ってきました。<br>日本語はJLPT N' + (phase.id >= 4 ? '2' : '3') + 'レベルです。<br>よろしくお願いします。';
+            const workplacePhrases = [
+                { jp: 'お疲れ様です', reading: 'otsukaresama desu', meaning: 'Greeting: "Thanks for your work"' },
+                { jp: '確認いたします', reading: 'kakunin itashimasu', meaning: 'Polite: "I will check"' },
+                { jp: 'デプロイしました', reading: 'depuroi shimashita', meaning: 'I deployed (it)' },
+                { jp: 'ロールバックします', reading: 'rōrubakku shimasu', meaning: 'I will rollback' },
+                { jp: '問題ありません', reading: 'mondai arimasen', meaning: 'No problem / No issues' },
+                { jp: 'レビューお願いします', reading: 'rebyū onegaishimasu', meaning: 'Please review (PR)' },
+                { jp: '対応をお願いします', reading: 'taiō o onegaishimasu', meaning: 'Please handle this' },
+                { jp: '障害が発生しています', reading: 'shōgai ga hassei shiteimasu', meaning: 'An incident has occurred' },
+            ];
+            const resumeFields = [
+                { jp: '氏名', reading: 'shimei', meaning: 'Full Name' },
+                { jp: '生年月日', reading: 'seinengappi', meaning: 'Date of Birth' },
+                { jp: '最終学歴', reading: 'saisho gakureki', meaning: 'Education History' },
+                { jp: '職務経歴', reading: 'shokumu keireki', meaning: 'Work Experience' },
+                { jp: '資格', reading: 'shikaku', meaning: 'Certifications (AWS, JLPT, etc.)' },
+                { jp: '志望動機', reading: 'shibō dōki', meaning: 'Reason for Applying' },
+                { jp: '自己PR', reading: 'jiko PR', meaning: 'Self-Promotion' },
+            ];
+            return { devopsVocab, selfIntro, workplacePhrases, resumeFields };
+        }
+
+        function renderCareerBridge(phase) {
+            const careerData = getCareerBridgeData(phase);
+
+            return `
+                <div class="scenarios-grid">
+                    <div class="scenario-card" style="border-color: rgba(0, 200, 150, 0.2);">
+                        <div class="scenario-header" style="color: #00C896;">💻 DevOps Vocabulary in Japanese</div>
+                        <div class="scenario-text">
+                            ${careerData.devopsVocab.map(v => `
+                                <div class="career-vocab-item">
+                                    <span class="career-vocab-jp">${v.term}</span>
+                                    <span class="career-vocab-reading">(${v.reading})</span> — ${v.meaning}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="scenario-card" style="border-color: rgba(108, 99, 255, 0.27);">
+                        <div class="scenario-header" style="color: #6C63FF;">🗣️ 自己紹介 (Self-Introduction)</div>
+                        <div class="scenario-text" style="font-size: 11px; line-height: 2;">
+                            ${careerData.selfIntro}
+                        </div>
+                    </div>
+                    <div class="scenario-card" style="border-color: rgba(255, 159, 67, 0.2);">
+                        <div class="scenario-header" style="color: #FF9F43;">📧 Workplace Japanese</div>
+                        <div class="scenario-text" style="font-size: 11px; line-height: 2;">
+                            ${careerData.workplacePhrases.map(p => `
+                                <div class="career-phrase-item">
+                                    <div class="career-phrase-jp">${p.jp}</div>
+                                    <div style="color: #888; font-size: 10px;">${p.reading} — ${p.meaning}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="scenario-card" style="border-color: rgba(236, 72, 153, 0.2);">
+                        <div class="scenario-header" style="color: #EC4899;">📄 履歴書 (Resume) Key Fields</div>
+                        <div class="scenario-text" style="font-size: 11px; line-height: 2;">
+                            ${careerData.resumeFields.map(f => `
+                                <div class="career-vocab-item">
+                                    <span class="career-vocab-jp">${f.jp}</span>
+                                    <span class="career-vocab-reading">(${f.reading})</span> — ${f.meaning}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // FAILURE MODES DATA & RENDERER
+        // DevOps-specific failure patterns with detection + recovery
+        // ═══════════════════════════════════════════════════════════
+
+        function getFailureModes(phase) {
+            return [
+                {
+                    name: 'Tutorial Hell: Passive Learning Without Building',
+                    icon: '📚',
+                    color: '#FF6B6B',
+                    description: 'Endlessly consuming tutorials, courses, and documentation without ever building original projects. You can explain concepts theoretically but cannot deploy real applications without step-by-step guides.',
+                    warningSigns: 'Can explain concepts in interviews but cannot deploy without a guide. Constantly switching between courses without completing any. Drowning in Kubernetes manifests while unsure of basic Linux commands. 5+ certification courses completed but zero personal projects.',
+                    recovery: 'Follow a structured roadmap: Linux → Git → CI/CD → Docker → K8s → IaC → Cloud. After every tutorial, build a small project that extends what was taught. Set a "no new tutorial" rule until the current concept is applied. Build a GitHub portfolio: pipelines, Dockerized apps, Terraform, K8s manifests.'
+                },
+                {
+                    name: 'Skipping Fundamentals: Jumping to Advanced Tools',
+                    icon: '⬆️',
+                    color: '#FF9F43',
+                    description: 'Rushing into Kubernetes, Terraform, and cloud platforms without mastering Linux, networking, shell scripting, and OS concepts. When something breaks in production, you cannot diagnose issues because you don\'t understand the layers beneath your tools.',
+                    warningSigns: 'Cannot diagnose issues at the OS level (permissions, processes, systemd). Unable to debug connectivity or DNS issues. Confusion over pod networking or container internals. Getting stuck on basic commands during interviews. Jumping to Kubernetes before understanding what a container is.',
+                    recovery: 'Study Linux fundamentals: file systems, permissions, SSH, processes, package management, shell scripting. Learn networking: DNS, ports/protocols, load balancing, reverse proxies, VPC networking, TCP/IP. Follow the layered roadmap strictly without skipping steps. Use structured practice platforms like Linux Journey, OverTheWire, or KodeKloud.'
+                },
+                {
+                    name: 'Tool Overload and Shiny Object Syndrome',
+                    icon: '🔧',
+                    color: '#6C63FF',
+                    description: 'Attempting to simultaneously master every DevOps tool in the ecosystem (K8s, Terraform, Ansible, Docker, Jenkins, GitHub Actions, Prometheus, Grafana, ELK, Helm, ArgoCD, Vault, Istio...), resulting in shallow knowledge across many areas and depth in none.',
+                    warningSigns: 'Learning plan includes 10+ tools simultaneously with no prioritization. Can name 100 tools at surface level but cannot architect complex systems in any. Tool stack has many tools that don\'t communicate. Spending more time managing tools than delivering value.',
+                    recovery: 'Adopt a T-shaped learning model: deep on a minimal core set first (one cloud, one IaC, one CI/CD, one container orchestration). Before adding any new tool, articulate the specific problem it solves that current tools cannot. Consolidate tools; favor tools that integrate well with existing stack.'
+                },
+                {
+                    name: 'Copy-Paste DevOps: Cargo Cult Engineering',
+                    icon: '📋',
+                    color: '#A855F7',
+                    description: 'Copying Terraform modules, K8s manifests, Docker Compose files, and pipeline configs from tutorials/Stack Overflow/GitHub without understanding what each line does. When something breaks, you cannot debug it.',
+                    warningSigns: 'Can deploy a K8s cluster but cannot explain what each manifest field does. Pipelines frequently fail in complex, hard-to-debug ways. "Ask Alex, they built it" is the primary documentation. Using Terraform modules from registry without reading source code.',
+                    recovery: 'For every config file used, read and annotate each section — research any line you can\'t explain. Build infrastructure from scratch at least once before using community modules. Practice breaking things deliberately in a lab, then diagnosing and fixing them. Adopt a "no copy-paste without comprehension" rule.'
+                },
+                {
+                    name: 'Over-Automation and Premature Complexity',
+                    icon: '⚙️',
+                    color: '#00C896',
+                    description: 'Adopting Kubernetes for simple applications that would run fine on a single VM or serverless. Automating complex manual processes without first simplifying them. Turning simple apps into complex distributed systems the team cannot maintain.',
+                    warningSigns: 'Tiny traffic applications running on full-blown Kubernetes clusters. Engineers debugging YAML more than writing application code. Automated pipelines that frequently fail in complex ways. Teams rebuilding the same failing automation year after year.',
+                    recovery: 'Start simple: managed services, serverless, or simple VM deployments before Kubernetes. Before automating, ask: "Can this process be simplified or eliminated first?" Adopt the principle: "Automation should serve clarity, not complicate it." Evaluate tool adoption based on actual scaling/complexity needs, not trends.'
+                },
+                {
+                    name: 'Ignoring Soft Skills, Collaboration, and Burnout',
+                    icon: '🧠',
+                    color: '#EC4899',
+                    description: 'Three interconnected pitfalls: (a) Neglecting soft skills — DevOps is a bridge role, engineers who cannot get buy-in find solutions go unused. (b) Siloed thinking — "that\'s not my job" prevents end-to-end ownership. (c) Burnout — up to 80% of DevOps engineers experience burnout from on-call fatigue, alert noise, and scope overload.',
+                    warningSigns: 'Struggling to gain buy-in for technical initiatives. Only attending immediate team\'s meetings; no business context. Anxiety when phone buzzes outside work; ignoring alerts. No written runbooks, architecture docs, or onboarding guides. Clock-watching; irritability; loss of non-tech hobbies.',
+                    recovery: 'Practice clear documentation, efficient meetings, empathy through active listening. Attend cross-functional meetings; volunteer to pair with other teams. Translate technical work into business language; adopt DORA metrics. Implement structured on-call: 1-week rotations with 2 weeks off. Reduce toil: track for two weeks, cap at 50% of time. Push back on scope explicitly.'
+                },
+            ];
+        }
+
+        function renderFailureModes(phase) {
+            const failures = getFailureModes(phase);
+
+            return `
+                <div class="scenarios-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    ${failures.map(f => `
+                        <div class="scenario-card" style="border-color: rgba(${hexToRgb(f.color)}, 0.2);">
+                            <div class="scenario-header" style="color: ${f.color};">${f.icon} ${f.name}</div>
+                            <div class="scenario-text" style="margin-bottom: 10px;">${f.description}</div>
+                            <div class="failure-warning">
+                                <div class="failure-warning-title">⚠️ WARNING SIGNS</div>
+                                <div class="failure-warning-text">${f.warningSigns}</div>
+                            </div>
+                            <div class="failure-recovery">
+                                <div class="failure-recovery-title">✅ RECOVERY</div>
+                                <div class="failure-recovery-text">${f.recovery}</div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // KPI DASHBOARD MODULE (embedded at top of Tracker tab)
+        // ═══════════════════════════════════════════════════════════
+
+        function formatKPINumber(num, unit) {
+            const n = Number(num) || 0;
+            return unit === '৳' ? '৳' + n.toLocaleString() : n.toLocaleString() + (unit || '');
+        }
+
+        function kpiStep(target) {
+            if (target >= 100000) return 5000;
+            if (target >= 10000) return 500;
+            if (target >= 100) return 10;
+            return 1;
+        }
+
+        function getKPIProgress(phaseId) {
+            try { return JSON.parse(localStorage.getItem('devops_kpi_' + phaseId) || '{}'); }
+            catch (e) { return {}; }
+        }
+
+        function renderKPIDashboard(phase) {
+            if (!phase.kpis || !phase.kpis.length) return '';
+            const progress = getKPIProgress(phase.id);
+            return `
+                <div class="kpi-section">
+                    <div class="kpi-section-title" style="color: ${phase.color};">🎯 Key Performance Indicators</div>
+                    <div class="kpi-section-sub">Task completion (below) tells you what's done. These tell you how much — tap −/+ to log progress as you go.</div>
+                    <div class="kpi-grid">
+                        ${phase.kpis.map((k, i) => {
+                            const current = progress[i] || 0;
+                            const pct = Math.min(100, Math.round((current / k.target) * 100));
+                            const barColor = pct >= 100 ? '#00C896' : phase.color;
+                            return `
+                                <div class="kpi-card">
+                                    <div class="kpi-label">${k.label}</div>
+                                    <div class="kpi-numbers">
+                                        <div class="kpi-current" style="color: ${barColor};">${formatKPINumber(current, k.unit)}</div>
+                                        <div class="kpi-target">of ${formatKPINumber(k.target, k.unit)}</div>
+                                    </div>
+                                    <div class="kpi-progress-bar">
+                                        <div class="kpi-progress-fill" style="background: ${barColor}; width: ${pct}%;"></div>
+                                    </div>
+                                    <div class="kpi-controls">
+                                        <button class="kpi-btn" onclick="stepKPI(${phase.id}, ${i}, -1)">−</button>
+                                        <button class="kpi-btn" onclick="stepKPI(${phase.id}, ${i}, 1)">+</button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function stepKPI(phaseId, kpiIndex, direction) {
+            const phase = PHASES.find(p => p.id === phaseId);
+            if (!phase || !phase.kpis[kpiIndex]) return;
+            const step = kpiStep(phase.kpis[kpiIndex].target);
+            const progress = getKPIProgress(phaseId);
+            const next = Math.max(0, (progress[kpiIndex] || 0) + (direction * step));
+            progress[kpiIndex] = next;
+            localStorage.setItem('devops_kpi_' + phaseId, JSON.stringify(progress));
+            render();
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // AI WORKFLOW MODULE
+        // ═══════════════════════════════════════════════════════════
+
+        function renderAIWorkflow(phase) {
+            const categoryColors = {
+                'Explain': '#4ECDC4', 'Debug': '#FF6B6B', 'Generate Tests': '#00C896',
+                'Generate Drafts': '#00C896', 'Generate Configs': '#00C896', 'Docs': '#6C63FF',
+                'Brainstorm': '#A855F7', 'Review': '#FF9F43', 'Client Work': '#FF9F43',
+                'Exam Prep': '#FF9F43', 'FE Exam (Optional)': '#FF9F43', 'Cross-Training': '#4ECDC4',
+                'Prompt Iteration': '#6C63FF', 'Cost Review': '#FF9F43', 'Interview Prep': '#6C63FF',
+                'Japanese Polish': '#EC4899', 'Tailoring': '#A855F7', 'Roleplay Practice': '#4ECDC4',
+                'Guardrail': '#FF6B6B', 'Study Aid': '#4ECDC4', 'Plan Ahead': '#00C896',
+            };
+            return `
+                <div class="tips-container" style="border-color: rgba(${hexToRgb(phase.color)}, 0.2);">
+                    <div class="section-title" style="color: ${phase.color};">🤖 AI Workflow — ${phase.label}</div>
+                    <div class="ai-guardrail-banner">
+                        <strong>Use AI as a multiplier, not a replacement.</strong> Everything you ship should be something you could explain, unaided, in an interview. If you can't yet, that's a signal to slow down and read more closely — not a reason to avoid the tool.
+                    </div>
+                    ${phase.aiWorkflow.map(w => `
+                        <div class="ai-workflow-item">
+                            <div class="ai-category-chip" style="background: rgba(${hexToRgb(categoryColors[w.category] || phase.color)}, 0.18); color: ${categoryColors[w.category] || phase.color};">${w.category}</div>
+                            <div class="ai-workflow-text">${w.detail}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // UNIVERSITY ADMISSION SPRINT MODULE (global checklist)
+        // ═══════════════════════════════════════════════════════════
+
+        function getAdmissionChecked() {
+            try { return JSON.parse(localStorage.getItem('devops_admission') || '{}'); }
+            catch (e) { return {}; }
+        }
+
+        function renderAdmissionSprint(phase) {
+            const checked = getAdmissionChecked();
+            const totalItems = ADMISSION_CHECKLIST.reduce((sum, g) => sum + g.items.length, 0);
+            const checkedCount = Object.values(checked).filter(Boolean).length;
+            const pct = totalItems ? Math.round((checkedCount / totalItems) * 100) : 0;
+            return `
+                <div class="tracker-container" style="border-color: rgba(${hexToRgb(phase.color)}, 0.2);">
+                    <div class="tracker-header">
+                        <div class="tracker-title" style="color: ${phase.color};">🎓 University Admission Sprint</div>
+                        <div class="tracker-count">${checkedCount} / ${totalItems} complete</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="background: ${phase.color}; width: ${pct}%;"></div>
+                    </div>
+                    <div style="margin-bottom: 18px; padding: 10px 14px; background: rgba(108,99,255,0.08); border-radius: 8px; border: 1px solid rgba(108,99,255,0.15);">
+                        <div style="font-size: 11px; color: #a0a0c0; line-height: 1.6;">
+                            Same checklist on every phase tab — most relevant right around Phase 0 → Phase 1, kept reachable everywhere so it's never buried while you're busy being excited about code. The plan treats the bachelor's degree as the PRIMARY Japan visa route, which makes this sprint load-bearing, not optional admin.
+                        </div>
+                    </div>
+                    ${ADMISSION_CHECKLIST.map((g, gi) => `
+                        <div class="checklist-group">
+                            <div class="checklist-group-title">${g.group}</div>
+                            ${g.items.map((item, ii) => {
+                                const key = gi + '-' + ii;
+                                const isChecked = !!checked[key];
+                                return `
+                                    <div class="checklist-item ${isChecked ? 'checked' : ''}" onclick="toggleAdmissionItem('${key}')">
+                                        <div class="checkbox" style="${isChecked ? `border-color: ${phase.color}; background: ${phase.color};` : ''}">${isChecked ? '✓' : ''}</div>
+                                        <div class="checklist-item-text">${item}</div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function toggleAdmissionItem(key) {
+            const checked = getAdmissionChecked();
+            checked[key] = !checked[key];
+            localStorage.setItem('devops_admission', JSON.stringify(checked));
+            render();
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // TIMELINE MODULE (global — calendar overlay on relative months)
+        // ═══════════════════════════════════════════════════════════
+
+        function renderTimeline(phase) {
+            const confidenceMeta = {
+                fixed: { opacity: 1, label: 'FIXED DATE' },
+                high: { opacity: 0.95, label: 'HIGH CONFIDENCE' },
+                good: { opacity: 0.85, label: 'GOOD ESTIMATE' },
+                moderate: { opacity: 0.7, label: 'MODERATE — HOLD LOOSELY' },
+                low: { opacity: 0.55, label: 'LOW — WILL LIKELY DRIFT' },
+                widest: { opacity: 0.42, label: 'WIDEST UNCERTAINTY' },
+            };
+            return `
+                <div class="tracker-container" style="border-color: rgba(${hexToRgb(phase.color)}, 0.2);">
+                    <div class="tracker-header">
+                        <div class="tracker-title" style="color: ${phase.color};">🗓️ Roadmap Timeline</div>
+                    </div>
+                    <div class="timeline-caveat">
+                        <strong>Read this before the dates below:</strong> every phase after Phase 0 is defined primarily in relative months — that stays the source of truth, since it auto-adjusts to your actual pace. These calendar dates are a best-guess overlay assuming steady progress, so the roadmap is easier to visualize than counting months in your head. The fading opacity below is intentional: confidence genuinely drops the further out a phase sits. Treat Phase 6 onward as a direction, not a deadline.
+                    </div>
+                    ${PHASES.map((p, i) => {
+                        const conf = confidenceMeta[p.calendarEstimate.confidence] || confidenceMeta.moderate;
+                        const isActive = p.id === phase.id;
+                        return `
+                            <div class="timeline-node">
+                                <div class="timeline-node-rail">
+                                    <div class="timeline-dot" style="border-color: ${p.color}; ${isActive ? `background: ${p.color};` : ''}"></div>
+                                    ${i < PHASES.length - 1 ? `<div class="timeline-line"></div>` : ''}
+                                </div>
+                                <div class="timeline-card" style="opacity: ${conf.opacity}; cursor: pointer; ${isActive ? `border-color: ${p.color}; box-shadow: 0 0 0 1px ${p.color};` : ''}" onclick="switchPhase(${i})">
+                                    <div class="timeline-date" style="color: ${p.color};">${p.calendarEstimate.range} · ${conf.label}</div>
+                                    <div class="timeline-phase-title">${p.icon} ${p.label} — ${p.title}</div>
+                                    <div class="timeline-phase-sub">${p.calendarEstimate.note}</div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // HEALTH SYSTEM + DECISION CHECKPOINTS MODULE (global)
+        // ═══════════════════════════════════════════════════════════
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function getISOWeekKey(date) {
+            const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+            const dayNum = d.getUTCDay() || 7;
+            d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+            const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+            const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+            return d.getUTCFullYear() + '-W' + String(weekNo).padStart(2, '0');
+        }
+
+        function getHealthData() {
+            const weekKey = getISOWeekKey(new Date());
+            let stored = {};
+            try { stored = JSON.parse(localStorage.getItem('devops_health') || '{}'); } catch (e) {}
+            return { weekKey, checked: stored[weekKey] || {} };
+        }
+
+        function getCheckpoints() {
+            try { return JSON.parse(localStorage.getItem('devops_checkpoints') || '[]'); }
+            catch (e) { return []; }
+        }
+
+        function renderWellbeing(phase) {
+            const health = getHealthData();
+            const checkpoints = getCheckpoints();
+            const healthCheckedCount = Object.values(health.checked).filter(Boolean).length;
+            const healthPct = Math.round((healthCheckedCount / HEALTH_CHECKLIST.length) * 100);
+
+            return `
+                <div class="tracker-container" style="border-color: rgba(${hexToRgb(phase.color)}, 0.2);">
+                    <div class="wellbeing-section-title">❤️ Health System — This Week (${health.weekKey})</div>
+                    <div class="wellbeing-section-sub">Resets automatically each week. The roadmap spans years — this is what protects the person running it.</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="background: #EC4899; width: ${healthPct}%;"></div>
+                    </div>
+                    ${HEALTH_CHECKLIST.map((h, i) => {
+                        const isChecked = !!health.checked[i];
+                        return `
+                            <div class="checklist-item ${isChecked ? 'checked' : ''}" onclick="toggleHealthItem(${i})">
+                                <div class="checkbox" style="${isChecked ? `border-color: #EC4899; background: #EC4899;` : ''}">${isChecked ? '✓' : ''}</div>
+                                <div class="checklist-item-text">${h.label} <span style="color:#666;">— ${h.freq}</span></div>
+                            </div>
+                        `;
+                    }).join('')}
+
+                    <div class="wellbeing-section-title" style="margin-top: 30px;">🔄 6-Month Decision Checkpoint</div>
+                    <div class="wellbeing-section-sub">Log a check-in roughly every 6 months. This isn't about redoing the plan — it's about noticing early if something needs to change.</div>
+                    <div class="checkpoint-prompt-list">
+                        ${CHECKPOINT_QUESTIONS.map(q => `<div class="checkpoint-prompt-item">• ${q}</div>`).join('')}
+                    </div>
+                    <textarea id="checkpointNotes" class="checkpoint-textarea" placeholder="Answer whichever prompts above feel relevant right now..."></textarea>
+                    <div>
+                        <button class="checkpoint-save-btn" onclick="saveCheckpoint(${phase.id})">Save Checkpoint</button>
+                    </div>
+                    ${checkpoints.length ? checkpoints.slice().reverse().map((c, idx) => {
+                        const realIdx = checkpoints.length - 1 - idx;
+                        return `
+                            <div class="checkpoint-entry">
+                                <div class="checkpoint-entry-date">${c.date} · ${c.phaseLabel}</div>
+                                <div class="checkpoint-entry-notes">${escapeHtml(c.notes)}</div>
+                                <div class="checkpoint-delete" onclick="deleteCheckpoint(${realIdx})">Delete entry</div>
+                            </div>
+                        `;
+                    }).join('') : '<div style="font-size: 11px; color: #555; padding: 8px 0 4px;">No checkpoints logged yet.</div>'}
+                </div>
+            `;
+        }
+
+        function toggleHealthItem(index) {
+            const weekKey = getISOWeekKey(new Date());
+            let stored = {};
+            try { stored = JSON.parse(localStorage.getItem('devops_health') || '{}'); } catch (e) {}
+            if (!stored[weekKey]) stored[weekKey] = {};
+            stored[weekKey][index] = !stored[weekKey][index];
+            localStorage.setItem('devops_health', JSON.stringify(stored));
+            render();
+        }
+
+        function saveCheckpoint(phaseId) {
+            const textarea = document.getElementById('checkpointNotes');
+            const notes = (textarea && textarea.value || '').trim();
+            if (!notes) return;
+            const phase = PHASES.find(p => p.id === phaseId);
+            const checkpoints = getCheckpoints();
+            checkpoints.push({
+                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                phaseLabel: phase ? phase.label : '',
+                notes,
+            });
+            localStorage.setItem('devops_checkpoints', JSON.stringify(checkpoints));
+            render();
+        }
+
+        function deleteCheckpoint(index) {
+            const checkpoints = getCheckpoints();
+            checkpoints.splice(index, 1);
+            localStorage.setItem('devops_checkpoints', JSON.stringify(checkpoints));
+            render();
+        }
+
+        function switchPhase(index) {
+            activePhase = index;
+            activeTab = "overview";
+            render();
+        }
+
+        function switchTab(tab) {
+            activeTab = tab;
+            render();
+        }
+
+        function toggleCheck(phaseId, taskIdx) {
+            const key = `${phaseId}-${taskIdx}`;
+            checkedItems[key] = !checkedItems[key];
+            render();
+        }
+
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : "0, 0, 0";
+        }
+
+        function attachEventListeners() {
+            // Event listeners are attached via onclick attributes in the HTML
+        }
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>
