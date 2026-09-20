@@ -9,7 +9,7 @@ Bangladesh → relevant Bachelor's in Europe → internships/working-student exp
 ## Read in this order
 1. [[01-MASTER-CAREER-PLAN.md]]
 2. [[02-IT-SKILLS-ROADMAP.md]]
-3. [03-CURRENT-PHASE.md]()
+3. [03-CURRENT-PHASE.md]
 4. [[04-EUROPE-UNIVERSITY-STRATEGY.md]]
 5. [[05-EUROPE-CAREER-STRATEGY.md]]
 6. [[06-JAPAN-TRANSITION.md]]
