@@ -7,23 +7,23 @@ This folder is the canonical replacement for the previous research archive. Keep
 Bangladesh → relevant Bachelor's in Europe → internships/working-student experience → ≥3 years European IT experience → Japan IT job → HSP optimization → PR target before age 29.
 
 ## Read in this order
-1. [[01-MASTER-CAREER-PLAN.md]]
-2. [[02-IT-SKILLS-ROADMAP.md]]
-3. [03-CURRENT-PHASE.md]
-4. [[04-EUROPE-UNIVERSITY-STRATEGY.md]]
-5. [[05-EUROPE-CAREER-STRATEGY.md]]
-6. [[06-JAPAN-TRANSITION.md]]
-7. [[07-HSP-PR-STRATEGY.md]]
-8. [[08-ENGLISH-PLAN.md]]
-9. [[09-JAPANESE-PLAN.md]]
-10. [[10-MONEY-FREELANCE-PLAN.md]]
-11. [[11-TRACKING-SYSTEM.md]]
-12. [[12-DECISION-RULES.md]]
-13. [[13-2026-2036-TIMELINE.md]]
+1. MASTER-CAREER-PLAN.md
+2. IT-SKILLS-ROADMAP.md
+3. CURRENT-PHASE.md
+4. EUROPE-UNIVERSITY-STRATEGY.md
+5. EUROPE-CAREER-STRATEGY.md
+6. JAPAN-TRANSITION.md
+7. HSP-PR-STRATEGY.md
+8. ENGLISH-PLAN.md
+9. JAPANESE-PLAN.md
+10. MONEY-FREELANCE-PLAN.md
+11. TRACKING-SYSTEM.md
+12. DECISION-RULES.md
+13. 2026-2036-TIMELINE.md
 
 also:
-1. [[Skills-Earning]]
-2. [[Road-Map]]
+1. Skills-Earning
+2. Road-Map
 
 ## Priority
 MAIN: IT / engineering
